@@ -1,0 +1,303 @@
+{
+	"info": {
+		"_postman_id": "7637209e-449a-4d5f-939a-dbcded334937",
+		"name": "Pipeline",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Pipeline Can Delete",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/pipelines/901d7577-ddd0-4328-951c-ae05bdb2b0cd/check",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"pipelines",
+						"901d7577-ddd0-4328-951c-ae05bdb2b0cd",
+						"check"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Pipelines",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get All Pipelines\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"\r",
+							"    name = jsonData.data.items[0].name\r",
+							"    pipelineSteps = jsonData.data.items[0].pipelineSteps\r",
+							"    \r",
+							"    pm.expect(name).to.not.be.null;\r",
+							"    pm.expect(pipelineSteps).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/pipelines",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"pipelines"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find Pipeline",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Find Pipeline\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"\r",
+							"    name = jsonData.data.name\r",
+							"    pipelineSteps = jsonData.data.pipelineSteps\r",
+							"    \r",
+							"    pm.expect(name).to.not.be.null;\r",
+							"    pm.expect(pipelineSteps).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/pipelines/901d7577-ddd0-4328-951c-ae05bdb2b0cd",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"pipelines",
+						"901d7577-ddd0-4328-951c-ae05bdb2b0cd"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Pipeline Steps",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get Pipeline Steps\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"\r",
+							"    name = jsonData.data.items[0].name\r",
+							"    sortOrder = jsonData.data.items[0].sortOrder\r",
+							"\r",
+							"    pm.expect(name).to.not.be.null;\r",
+							"    pm.expect(sortOrder).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/pipelines/steps",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"pipelines",
+						"steps"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Step",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get Step\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"\r",
+							"    name = jsonData.data.name\r",
+							"    sortOrder = jsonData.data.sortOrder\r",
+							"\r",
+							"    pm.expect(name).to.not.be.null;\r",
+							"    pm.expect(sortOrder).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/pipelines/steps/db4e18a9-409d-4af0-870e-a408a14717ef",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"pipelines",
+						"steps",
+						"db4e18a9-409d-4af0-870e-a408a14717ef"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Pipeline and PipelineStep Items",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/pipelines/PipelineAndPipelineStepItems",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"pipelines",
+						"PipelineAndPipelineStepItems"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

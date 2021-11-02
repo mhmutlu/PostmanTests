@@ -1,0 +1,158 @@
+{
+	"info": {
+		"_postman_id": "8a8e3b79-c253-4f52-9eb7-9b4d4fe421af",
+		"name": "Role",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Roles",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get Roles\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    name = jsonData.data.items[0].name\r",
+							"    pm.expect(name).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/roles",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"roles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Permission List",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get Permission List\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    name = jsonData.data.items[0].name\r",
+							"    displayName = jsonData.data.items[0].displayName\r",
+							"\r",
+							"    pm.expect(name).to.not.be.null;\r",
+							"    pm.expect(displayName).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/roles/permissions",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"roles",
+						"permissions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Role By Id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get Role By Id\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    name = jsonData.data.name\r",
+							"    pm.expect(name).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/roles/43",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"roles",
+						"43"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

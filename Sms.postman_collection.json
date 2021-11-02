@@ -1,0 +1,152 @@
+{
+	"info": {
+		"_postman_id": "23ad29e6-b857-4e9c-9872-9a27dab1977b",
+		"name": "Sms",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Sms Detail",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/sms",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"sms"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Sms with filter",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/sms/filter",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"sms",
+						"filter"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Recipients",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Recipients\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    fullName = jsonData.data[0].fullName\r",
+							"    phoneNumber = jsonData.data[0].phoneNumber\r",
+							"    modelName = jsonData.data[0].modelName\r",
+							"\r",
+							"    pm.expect(fullName).to.not.be.null;\r",
+							"    pm.expect(phoneNumber).to.not.be.null;\r",
+							"    pm.expect(modelName).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/sms/find?phoneNumber=5386619221",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"sms",
+						"find"
+					],
+					"query": [
+						{
+							"key": "phoneNumber",
+							"value": "5386619221"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

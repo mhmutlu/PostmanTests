@@ -1,0 +1,173 @@
+{
+	"info": {
+		"_postman_id": "f22e6fd5-3ccb-474d-8f68-b6374a0227af",
+		"name": "UserGroup",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get User Groups",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get User Groups\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    userGroupName = jsonData.data[0].userGroupName\r",
+							"    managerUserName = jsonData.data[0].manager.managerUserName\r",
+							"    managerName = jsonData.data[0].manager.managerName\r",
+							"    surname = jsonData.data[0].manager.surname\r",
+							"\r",
+							"    pm.expect(userGroupName).to.not.be.null;\r",
+							"    pm.expect(managerUserName).to.not.be.null;\r",
+							"    pm.expect(managerName).to.not.be.null;\r",
+							"    pm.expect(surname).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/userGroup",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"userGroup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Group Detail",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get Group Detail\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    userGroupName = jsonData.data.userGroupName\r",
+							"    pm.expect(userGroupName).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/userGroup/group/409d6765-4e2e-41c7-98c5-2acdc8a088ea",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"userGroup",
+						"group",
+						"409d6765-4e2e-41c7-98c5-2acdc8a088ea"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Group Users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get Group Users\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    userName = jsonData.data.userName\r",
+							"    name = jsonData.data.name\r",
+							"    surname = jsonData.data.surname\r",
+							"    emailAddress = jsonData.data.emailAddress\r",
+							"\r",
+							"    pm.expect(userName).to.not.be.null;\r",
+							"    pm.expect(name).to.not.be.null;\r",
+							"    pm.expect(surname).to.not.be.null;\r",
+							"    pm.expect(emailAddress).to.not.be.null;\r",
+							"    \r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/userGroup/group/user/409d6765-4e2e-41c7-98c5-2acdc8a088ea",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"userGroup",
+						"group",
+						"user",
+						"409d6765-4e2e-41c7-98c5-2acdc8a088ea"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

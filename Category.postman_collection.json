@@ -1,0 +1,172 @@
+{
+	"info": {
+		"_postman_id": "e07e6cac-4554-492e-a209-38bb42ce15c5",
+		"name": "Category",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All Categories",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get All Categories\", () => {\r",
+							"    var jsonData = pm.response.json()\r",
+							"    \r",
+							"    name = jsonData.data[0].name\r",
+							"    code = jsonData.data[0].code\r",
+							"    categories = jsonData.data[0].categories\r",
+							"    products = jsonData.data[0].products\r",
+							"\r",
+							"    pm.expect(name).to.not.be.null\r",
+							"    pm.expect(code).to.not.be.null\r",
+							"    pm.expect(categories).to.not.be.null\r",
+							"    pm.expect(products).to.not.be.null\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/categories",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Categories Tree View",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get All Categories Tree View\", () => {\r",
+							"    var jsonData = pm.response.json()\r",
+							"    \r",
+							"    value = jsonData.data[0].value\r",
+							"    label = jsonData.data[0].label\r",
+							"\r",
+							"    pm.expect(value).to.not.be.null\r",
+							"    pm.expect(label).to.not.be.null\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/categories/tree-view",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"categories",
+						"tree-view"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find Category",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Find Category\", () => {\r",
+							"    var jsonData = pm.response.json()\r",
+							"    \r",
+							"    name = jsonData.data.name\r",
+							"    code = jsonData.data.code\r",
+							"    categories = jsonData.data.categories\r",
+							"    products = jsonData.data.products\r",
+							"\r",
+							"    pm.expect(name).to.not.be.null\r",
+							"    pm.expect(code).to.not.be.null\r",
+							"    pm.expect(categories).to.not.be.null\r",
+							"    pm.expect(products).to.not.be.null\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/categories/06444033-d1e9-4441-bf46-ecc799e7a9ce",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"categories",
+						"06444033-d1e9-4441-bf46-ecc799e7a9ce"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

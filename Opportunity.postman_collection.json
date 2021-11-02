@@ -1,0 +1,619 @@
+{
+	"info": {
+		"_postman_id": "30814120-155a-4016-8e0e-244f00277675",
+		"name": "Opportunity",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Find Opportunity with OpportunityId",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Find Opportunity with OpportunityId\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    title = jsonData.data.title\r",
+							"    date = jsonData.data.date\r",
+							"    sellingProcessName = jsonData.data.pipeline.name\r",
+							"    statusName = jsonData.data.pipelineStep.name\r",
+							"\r",
+							"    pm.expect(title).to.not.be.null;\r",
+							"    pm.expect(date).to.not.be.null;\r",
+							"    pm.expect(sellingProcessName).to.not.be.null;\r",
+							"    pm.expect(statusName).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/opportunities/14def679-a0f2-4766-a668-28bc88da73c0",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"opportunities",
+						"14def679-a0f2-4766-a668-28bc88da73c0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Products of Opportunity",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get Products of Opportunity\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    name = jsonData.data.items[0].name\r",
+							"    quantity = jsonData.data.items[0].quantity\r",
+							"\r",
+							"    pm.expect(name).to.not.be.null;\r",
+							"    pm.expect(quantity).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/opportunities/14def679-a0f2-4766-a668-28bc88da73c0/products",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"opportunities",
+						"14def679-a0f2-4766-a668-28bc88da73c0",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Status History For Pipeline",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/opportunities/pipelineHistory",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"opportunities",
+						"pipelineHistory"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Quotes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get Quotes\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    title = jsonData.data.items[0].title\r",
+							"    date = jsonData.data.items[0].date\r",
+							"   \r",
+							"    pm.expect(title).to.not.be.null;\r",
+							"    pm.expect(date).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/opportunities/quotes",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"opportunities",
+						"quotes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Quote Product And Histories",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get Quote Product And Histoires\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    title = jsonData.data.title\r",
+							"    date = jsonData.data.date\r",
+							"\r",
+							"    pm.expect(title).to.not.be.null;\r",
+							"    pm.expect(date).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/opportunities/14def679-a0f2-4766-a668-28bc88da73c0/quotes/productAndHistory",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"opportunities",
+						"14def679-a0f2-4766-a668-28bc88da73c0",
+						"quotes",
+						"productAndHistory"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Pipeline Step History",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get Pipeline Step History\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    name = jsonData.data.pipelineSteps.name\r",
+							"    sortOrder = jsonData.data.pipelineSteps.sortOrder\r",
+							"\r",
+							"    pm.expect(name).to.not.be.null;\r",
+							"    pm.expect(sortOrder).to.not.be.null;\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/opportunities/14def679-a0f2-4766-a668-28bc88da73c0/pipelineStepHistory",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"opportunities",
+						"14def679-a0f2-4766-a668-28bc88da73c0",
+						"pipelineStepHistory"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Calculate Money Unities With OpportunityIds",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Calculate Money Unities With OpportunityIds\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    name = jsonData.data.name\r",
+							"    code = jsonData.data.code\r",
+							"    symbol = jsonData.data.symbol\r",
+							"\r",
+							"    pm.expect(name).to.not.be.null;\r",
+							"    pm.expect(code).to.not.be.null;\r",
+							"    pm.expect(symbol).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/opportunities/opportunity-calculate",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"opportunities",
+						"opportunity-calculate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Opportunities by Pipeline and Pipelinestep",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get All Opportunities by Pipeline and Pipelinestep\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    id = jsonData.data.items[0].id\r",
+							"    title = jsonData.data.items[0].title\r",
+							"    pipelineStepId = jsonData.data.items[0].pipelineStepId\r",
+							"\r",
+							"    pm.expect(id).to.not.be.null;\r",
+							"    pm.expect(title).to.not.be.null;\r",
+							"    pm.expect(pipelineStepId).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/opportunities/getOpportunitiesByPipeline",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"opportunities",
+						"getOpportunitiesByPipeline"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Opportunities with Filter",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get All Opportunities with Filter\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    title = jsonData.data.items[0].title\r",
+							"    pipelineStepName = jsonData.data.items[0].pipelineStep.name\r",
+							"    pipelineName = jsonData.data.items[0].pipeline.name\r",
+							"    currencyName = jsonData.data.items[0].currency.name\r",
+							"    currencyCode = jsonData.data.items[0].currency.name\r",
+							"    currencySymbol = jsonData.data.items[0].currency.name\r",
+							"\r",
+							"    pm.expect(title).to.not.be.null;\r",
+							"    pm.expect(pipelineStepName).to.not.be.null;\r",
+							"    pm.expect(pipelineName).to.not.be.null;\r",
+							"    pm.expect(currencyName).to.not.be.null;\r",
+							"    pm.expect(currencyCode).to.not.be.null;\r",
+							"    pm.expect(currencySymbol).to.not.be.null;\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/opportunities?maxResultCount=1&pipelineId=b7414756-93ce-4b18-97c6-d059ad59334a&pipelineStepId=05aecac8-e1d5-4aa8-83e2-ed6d1511ded8",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"opportunities"
+					],
+					"query": [
+						{
+							"key": "maxResultCount",
+							"value": "1"
+						},
+						{
+							"key": "pipelineId",
+							"value": "b7414756-93ce-4b18-97c6-d059ad59334a"
+						},
+						{
+							"key": "pipelineStepId",
+							"value": "05aecac8-e1d5-4aa8-83e2-ed6d1511ded8"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find Basic Opportunity with OpportunityId",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Find Basic Opportunity with OpportunityId\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    title = jsonData.data.title\r",
+							"    date = jsonData.data.date\r",
+							"\r",
+							"    pm.expect(title).to.not.be.null;\r",
+							"    pm.expect(date).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/opportunities/14def679-a0f2-4766-a668-28bc88da73c0/Basic",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"opportunities",
+						"14def679-a0f2-4766-a668-28bc88da73c0",
+						"Basic"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Opportunity Activities and Feeds Total Count",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"    pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Find Basic Opportunity with OpportunityId\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    totalOverdueActivityCount = jsonData.data[0].totalOverdueActivityCount\r",
+							"    totalActivityCount = jsonData.data[0].totalActivityCount\r",
+							"    totalFeedCount = jsonData.data[0].totalFeedCount\r",
+							"    opportunityId = jsonData.data[0].opportunityId\r",
+							"\r",
+							"    pm.expect(totalOverdueActivityCount).to.not.be.null;\r",
+							"    pm.expect(totalActivityCount).to.not.be.null;\r",
+							"    pm.expect(totalFeedCount).to.not.be.null;\r",
+							"    pm.expect(opportunityId).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/opportunities/getOpportunityFeedsActivitiesCount?opportunityIds=2ee0a87a-e346-4489-904f-73425067566c",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"opportunities",
+						"getOpportunityFeedsActivitiesCount"
+					],
+					"query": [
+						{
+							"key": "opportunityIds",
+							"value": "2ee0a87a-e346-4489-904f-73425067566c"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

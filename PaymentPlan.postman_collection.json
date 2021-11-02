@@ -1,0 +1,281 @@
+{
+	"info": {
+		"_postman_id": "ac244aa5-ac60-40ec-82a9-3d27e4e8464c",
+		"name": "PaymentPlan",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Payment Plans",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get Payment Plans\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    id = jsonData.data.items[0].id\r",
+							"    paymentPlanId = jsonData.data.items[0].paymentPlanId\r",
+							"    opportunityId = jsonData.data.items[0].opportunityId\r",
+							"    dateString = jsonData.data.items[0].dateString\r",
+							"    amountString = jsonData.data.items[0].amountString\r",
+							"    invoiceDateString = jsonData.data.items[0].invoiceDateString\r",
+							"\r",
+							"    name = jsonData.data.items[0].currency.name\r",
+							"    code = jsonData.data.items[0].currency.code\r",
+							"    symbol = jsonData.data.items[0].currency.symbol\r",
+							"\r",
+							"    pm.expect(id).to.not.be.null;\r",
+							"    pm.expect(paymentPlanId).to.not.be.null;\r",
+							"    pm.expect(opportunityId).to.not.be.null;\r",
+							"    pm.expect(dateString).to.not.be.null;\r",
+							"    pm.expect(amountString).to.not.be.null;\r",
+							"    pm.expect(invoiceDateString).to.not.be.null;\r",
+							"\r",
+							"\r",
+							"    pm.expect(name).to.not.be.null;\r",
+							"    pm.expect(code).to.not.be.null;\r",
+							"    pm.expect(symbol).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/paymentPlans?opportunityId=0edf01c2-e41b-43f4-b87f-95a9da126638&paymentId=d3b87061-8e8f-4657-8a8c-e613b0e546de&companyId=1de286a6-edea-42d0-ae0c-594f09a9da6e&endDate=2021-09-20T18:34:54.090Z&isInvoice=true&invoiceId=571d5e2d-0e1f-4c19-b825-37fe2fa51e8a",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"paymentPlans"
+					],
+					"query": [
+						{
+							"key": "opportunityId",
+							"value": "0edf01c2-e41b-43f4-b87f-95a9da126638"
+						},
+						{
+							"key": "paymentId",
+							"value": "d3b87061-8e8f-4657-8a8c-e613b0e546de"
+						},
+						{
+							"key": "companyId",
+							"value": "1de286a6-edea-42d0-ae0c-594f09a9da6e"
+						},
+						{
+							"key": "endDate",
+							"value": "2021-09-20T18:34:54.090Z"
+						},
+						{
+							"key": "isInvoice",
+							"value": "true"
+						},
+						{
+							"key": "invoiceId",
+							"value": "571d5e2d-0e1f-4c19-b825-37fe2fa51e8a"
+						},
+						{
+							"key": "sorting",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "skipCount",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "maxResultCount",
+							"value": "500",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Payment Plan Summary",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get Payment Plan Summary\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    totalAmount = jsonData.data.totalAmount\r",
+							"    numberOfPayments = jsonData.data.numberOfPayments\r",
+							"    period = jsonData.data.period\r",
+							"\r",
+							"    pm.expect(totalAmount).to.not.be.null;\r",
+							"    pm.expect(numberOfPayments).to.not.be.null;\r",
+							"    pm.expect(period).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/paymentPlans/opportunities/0edf01c2-e41b-43f4-b87f-95a9da126638",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"paymentPlans",
+						"opportunities",
+						"0edf01c2-e41b-43f4-b87f-95a9da126638"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find Payment Plan",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Find Payment Plan\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    totalAmount = jsonData.data.totalAmount\r",
+							"    numberOfPayments = jsonData.data.numberOfPayments\r",
+							"    period = jsonData.data.period\r",
+							"\r",
+							"    pm.expect(totalAmount).to.not.be.null;\r",
+							"    pm.expect(numberOfPayments).to.not.be.null;\r",
+							"    pm.expect(period).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/paymentPlans/d3b87061-8e8f-4657-8a8c-e613b0e546de",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"paymentPlans",
+						"d3b87061-8e8f-4657-8a8c-e613b0e546de"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Calculate Money Unites with PaymentplanIds",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Calculate Money Unites with PaymentplanIds\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    name = jsonData.data.baseCurrency.name\r",
+							"    code = jsonData.data.baseCurrency.code\r",
+							"    symbol = jsonData.data.baseCurrency.symbol\r",
+							"\r",
+							"    pm.expect(name).to.not.be.null;\r",
+							"    pm.expect(code).to.not.be.null;\r",
+							"    pm.expect(symbol).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/paymentPlans/paymentplan-calculate",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"paymentPlans",
+						"paymentplan-calculate"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,159 @@
+{
+	"info": {
+		"_postman_id": "99cee1fb-69b5-49dd-bdf9-751f6cc1969c",
+		"name": "TextTemplate",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All Templates",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get All Templates\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    template = jsonData.data.items[0].template\r",
+							"    pm.expect(template).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/templates/types/email",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"templates",
+						"types",
+						"email"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find Template",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Find Template\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    template = jsonData.data.template\r",
+							"    pm.expect(template).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/templates/cb9a4812-e4a0-4027-84ba-5915149d4192",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"templates",
+						"cb9a4812-e4a0-4027-84ba-5915149d4192"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get With Model For Template",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get With Model For Template\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    template = jsonData.data.template\r",
+							"    pm.expect(template).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/templates/043378a6-17aa-4710-b877-68e7c411b572/entities/c8d76957-2fb8-43fc-94df-75c93b3a7626",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"templates",
+						"043378a6-17aa-4710-b877-68e7c411b572",
+						"entities",
+						"c8d76957-2fb8-43fc-94df-75c93b3a7626"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

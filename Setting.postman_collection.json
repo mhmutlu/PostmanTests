@@ -1,0 +1,706 @@
+{
+	"info": {
+		"_postman_id": "b1cde169-8ae9-4b9c-929b-f4c290c3964b",
+		"name": "Setting",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All Currencies",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get All Currencies\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    name = jsonData.data[0].name\r",
+							"    code = jsonData.data[0].code\r",
+							"    symbol = jsonData.data[0].symbol\r",
+							"\r",
+							"    pm.expect(name).to.not.be.null;\r",
+							"    pm.expect(code).to.not.be.null;\r",
+							"    pm.expect(symbol).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/settings/currencies",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"settings",
+						"currencies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Timezones",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get All Timezones\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    name = jsonData.data[0].name\r",
+							"    code = jsonData.data[0].code\r",
+							"    offset = jsonData.data[0].offset\r",
+							"\r",
+							"    pm.expect(name).to.not.be.null;\r",
+							"    pm.expect(code).to.not.be.null;\r",
+							"    pm.expect(offset).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/settings/timezones",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"settings",
+						"timezones"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Application Init",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Application Init\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    userName = jsonData.data.user.userName\r",
+							"    name = jsonData.data.user.name\r",
+							"    surname = jsonData.data.user.surname\r",
+							"    emailAddress = jsonData.data.user.emailAddress\r",
+							"    fullName = jsonData.data.user.fullName\r",
+							"    roleNames = jsonData.data.user.roleNames\r",
+							"    tenantName = jsonData.data.user.tenantName\r",
+							"\r",
+							"    tenantSettings = jsonData.data.tenantSettings\r",
+							"\r",
+							"    userLanguage = jsonData.data.userLanguage\r",
+							"\r",
+							"    currencyName = jsonData.data.settings.currency.name\r",
+							"    currencyCode = jsonData.data.settings.currency.code\r",
+							"    currencySymbol = jsonData.data.settings.currency.symbol\r",
+							"\r",
+							"    countryName = jsonData.data.settings.country.name\r",
+							"    countryCode = jsonData.data.settings.country.code\r",
+							"    countryFlagUrl = jsonData.data.settings.country.flagUrl\r",
+							"    countryTimezoneName = jsonData.data.settings.country.timezone.name\r",
+							"    countryTimezoneCode = jsonData.data.settings.country.timezone.code\r",
+							"    countryTimezoneDescription = jsonData.data.settings.country.timezone.description\r",
+							"    countryTimezoneOffset = jsonData.data.settings.country.timezone.offset\r",
+							"    countryCurrencyCode = jsonData.data.settings.country.currency.code\r",
+							"    countryCurrencyName = jsonData.data.settings.country.currency.name\r",
+							"    countryCurrencySymbol= jsonData.data.settings.country.currency.symbol\r",
+							"    countryLanguage = jsonData.data.settings.country.language\r",
+							"\r",
+							"    timezoneName = jsonData.data.settings.timezone.name\r",
+							"    timezoneCode = jsonData.data.settings.timezone.code\r",
+							"    timezoneOffset = jsonData.data.settings.timezone.offset\r",
+							"\r",
+							"\r",
+							"    pm.expect(userName).to.not.be.null;\r",
+							"    pm.expect(name).to.not.be.null;\r",
+							"    pm.expect(surname).to.not.be.null;\r",
+							"    pm.expect(emailAddress).to.not.be.null;\r",
+							"    pm.expect(fullName).to.not.be.null;\r",
+							"    pm.expect(roleNames).to.not.be.null;\r",
+							"    pm.expect(tenantName).to.not.be.null;\r",
+							"\r",
+							"    pm.expect(tenantSettings).to.not.be.null;\r",
+							"\r",
+							"    pm.expect(userLanguage).to.not.be.null;\r",
+							"\r",
+							"    pm.expect(currencyName).to.not.be.null;\r",
+							"    pm.expect(currencyCode).to.not.be.null;\r",
+							"    pm.expect(currencySymbol).to.not.be.null;\r",
+							"\r",
+							"    pm.expect(countryName).to.not.be.null;\r",
+							"    pm.expect(countryCode).to.not.be.null;\r",
+							"    pm.expect(countryFlagUrl).to.not.be.null;\r",
+							"    pm.expect(countryTimezoneName).to.not.be.null;\r",
+							"    pm.expect(countryTimezoneCode).to.not.be.null;\r",
+							"    pm.expect(countryTimezoneDescription).to.not.be.null;\r",
+							"    pm.expect(countryTimezoneOffset).to.not.be.null;\r",
+							"    pm.expect(countryCurrencyCode).to.not.be.null;\r",
+							"    pm.expect(countryCurrencyName).to.not.be.null;\r",
+							"    pm.expect(countryCurrencySymbol).to.not.be.null;\r",
+							"    pm.expect(countryLanguage).to.not.be.null;\r",
+							"\r",
+							"    pm.expect(timezoneName).to.not.be.null;\r",
+							"    pm.expect(timezoneCode).to.not.be.null;\r",
+							"    pm.expect(timezoneOffset).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/settings/init",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"settings",
+						"init"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Settings",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get Settings\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    currencyName = jsonData.data.currency.name\r",
+							"    currencyCode = jsonData.data.currency.code\r",
+							"    currencySymbol = jsonData.data.currency.symbol\r",
+							"\r",
+							"    countryName = jsonData.data.country.name\r",
+							"    countryCode = jsonData.data.country.code\r",
+							"    countryFlagUrl = jsonData.data.country.flagUrl\r",
+							"    countryTimezoneName = jsonData.data.country.timezone.name\r",
+							"    countryTimezoneCode = jsonData.data.country.timezone.code\r",
+							"    countryTimezoneDescription = jsonData.data.country.timezone.description\r",
+							"    countryTimezoneOffset = jsonData.data.country.timezone.offset\r",
+							"    currencyCode = jsonData.data.country.currency.code\r",
+							"    currencyName = jsonData.data.country.currency.name\r",
+							"    currencySymbol = jsonData.data.country.currency.symbol\r",
+							"    language = jsonData.data.country.language\r",
+							"\r",
+							"    timezoneName = jsonData.data.name\r",
+							"    timezoneCode = jsonData.data.code\r",
+							"    timezoneOffset = jsonData.data.offset           \r",
+							"\r",
+							"    pm.expect(currencyName).to.not.be.null;\r",
+							"    pm.expect(currencyCode).to.not.be.null;\r",
+							"    pm.expect(currencySymbol).to.not.be.null;\r",
+							"\r",
+							"    pm.expect(countryName).to.not.be.null;\r",
+							"    pm.expect(countryCode).to.not.be.null;\r",
+							"    pm.expect(countryFlagUrl).to.not.be.null;\r",
+							"    pm.expect(countryTimezoneName).to.not.be.null;\r",
+							"    pm.expect(countryTimezoneCode).to.not.be.null;\r",
+							"    pm.expect(countryTimezoneDescription).to.not.be.null;\r",
+							"    pm.expect(countryTimezoneOffset).to.not.be.null;\r",
+							"    pm.expect(currencyCode).to.not.be.null;\r",
+							"    pm.expect(currencyName).to.not.be.null;\r",
+							"    pm.expect(currencySymbol).to.not.be.null;\r",
+							"    pm.expect(language).to.not.be.null;\r",
+							"\r",
+							"    pm.expect(currencyName).to.not.be.null;\r",
+							"    pm.expect(currencySymbol).to.not.be.null;\r",
+							"    pm.expect(language).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/settings",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"settings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Setting for Tenant",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get Setting for Tenant\", () => {\r",
+							"    var jsonData = pm.response.json(); \r",
+							"    data = jsonData.data\r",
+							"    pm.expect(data).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/settings/tenant/BA.CRM.Timezone",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"settings",
+						"tenant",
+						"BA.CRM.Timezone"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Settings for User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get All Settings for User\", () => {\r",
+							"    var jsonData = pm.response.json(); \r",
+							"    \r",
+							"    name = jsonData.data.name\r",
+							"    value = jsonData.data.value\r",
+							"\r",
+							"    pm.expect(name).to.not.be.null;\r",
+							"    pm.expect(value).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/settings/user",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"settings",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Settings for User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get Settings for User\", () => {\r",
+							"    var jsonData = pm.response.json(); \r",
+							"    data = jsonData.data\r",
+							"    pm.expect(data).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/settings/user/BA.CRM.TimezoneForUser",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"settings",
+						"user",
+						"BA.CRM.TimezoneForUser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Settings for Application",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/settings/application",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"settings",
+						"application"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Setting for Application",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/settings/application/BA.CRM.StartPage",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"settings",
+						"application",
+						"BA.CRM.StartPage"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Settings Definations",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get All Settings Definations\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    name = jsonData.data[0].name\r",
+							"    value = jsonData.data[0].value\r",
+							"\r",
+							"    pm.expect(name).to.not.be.null;\r",
+							"    pm.expect(value).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/settings/definations",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"settings",
+						"definations"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Settings Tenant Currency",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get All Settings Tenant Currency\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    name = jsonData.data[0].currency.name\r",
+							"    code = jsonData.data[0].currency.code\r",
+							"    symbol = jsonData.data[0].currency.symbol\r",
+							"\r",
+							"    pm.expect(name).to.not.be.null;\r",
+							"    pm.expect(code).to.not.be.null;\r",
+							"    pm.expect(symbol).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/settings/tenantCurrency",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"settings",
+						"tenantCurrency"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Settings for Tenant",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get All Settings for Tenant\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    name = jsonData.data[0].name\r",
+							"    value = jsonData.data[0].value\r",
+							"\r",
+							"    pm.expect(name).to.not.be.null;\r",
+							"    pm.expect(value).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/settings/tenant",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"settings",
+						"tenant"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

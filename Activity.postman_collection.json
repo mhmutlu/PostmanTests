@@ -1,0 +1,808 @@
+{
+	"info": {
+		"_postman_id": "34b98689-fd84-4bb5-a8f1-10645f05aa69",
+		"name": "Activity",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Check Activity",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/activities/check?date=2021-10-06T07:00:00.000Z",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"activities",
+						"check"
+					],
+					"query": [
+						{
+							"key": "date",
+							"value": "2021-10-06T07:00:00.000Z"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Activities with filter",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/activities?relationType=lead&relationId=3b98bf2a-3878-46ec-9602-4386e4334299",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"activities"
+					],
+					"query": [
+						{
+							"key": "skipCount",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "maxResultCount",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "relationType",
+							"value": "lead"
+						},
+						{
+							"key": "relationId",
+							"value": "3b98bf2a-3878-46ec-9602-4386e4334299"
+						},
+						{
+							"key": "relationLeadIds",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "startDate",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "endDate",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "isCompleted",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "withAttendedActivities",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "periodId",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "activityTypes",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "activityTypeIds",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "ownerIds",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "ownerGroupIds",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "isIncludeOverdue",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Entiny",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/activities/type",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"activities",
+						"type"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get My Activities",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"My Activity Check\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    displayName = jsonData.data.items[0].displayName\r",
+							"    subject = jsonData.data.items[0].subject\r",
+							"    taskStatus = jsonData.data.items[0].taskStatus\r",
+							"    activityTypeId = jsonData.data.items[0].activityTypeId\r",
+							"\r",
+							"    pm.expect(displayName).to.not.be.null;\r",
+							"    pm.expect(subject).to.not.be.null;\r",
+							"    pm.expect(taskStatus).to.not.be.null;\r",
+							"    pm.expect(activityTypeId).to.not.be.null;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Aktivite Owner Kontrolü\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"        \r",
+							"    userName = jsonData.data.items[0].owner.userName\r",
+							"    name = jsonData.data.items[0].owner.name\r",
+							"    surname = jsonData.data.items[0].owner.surname\r",
+							"    fullName = jsonData.data.items[0].owner.fullName\r",
+							"    \r",
+							"    pm.expect(userName).to.not.be.null;\r",
+							"    pm.expect(name).to.not.be.null;\r",
+							"    pm.expect(surname).to.not.be.null;\r",
+							"    pm.expect(fullName).to.not.be.null;\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/activities/myActivities",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"activities",
+						"myActivities"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Activity Types",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get Activity Types\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    name = jsonData.data.items[0].name\r",
+							"    fieldsJson = jsonData.data.items[0].fieldsJson\r",
+							"    isDefault = jsonData.data.items[0].isDefault\r",
+							"    modelId = jsonData.data.items[0].modelId\r",
+							"    isDeleted = jsonData.data.items[0].isDeleted\r",
+							"    lastModificationTime = jsonData.data.items[0].lastModificationTime\r",
+							"    creationTime = jsonData.data.items[0].creationTime\r",
+							"    creatorUserId = jsonData.data.items[0].creatorUserId\r",
+							"    id = jsonData.data.items[0].id\r",
+							"\r",
+							"    pm.expect(name).to.not.be.null;\r",
+							"    pm.expect(fieldsJson).to.not.be.null;\r",
+							"    pm.expect(isDefault).to.not.be.null;\r",
+							"    pm.expect(modelId).to.not.be.null;\r",
+							"    pm.expect(isDeleted).to.not.be.null;\r",
+							"    pm.expect(lastModificationTime).to.not.be.null;\r",
+							"    pm.expect(creationTime).to.not.be.null;\r",
+							"    pm.expect(creatorUserId).to.not.be.null;\r",
+							"    pm.expect(id).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/activities/activity-types",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"activities",
+						"activity-types"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Single Activity Type",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get Single Activity Type\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    name = jsonData.data.name\r",
+							"    fieldsJson = jsonData.data.fieldsJson\r",
+							"    lastModificationTime = jsonData.data.lastModificationTime\r",
+							"    id = jsonData.data.id\r",
+							"\r",
+							"    pm.expect(name).to.not.be.null;\r",
+							"    pm.expect(fieldsJson).to.not.be.null;\r",
+							"    pm.expect(lastModificationTime).to.not.be.null;\r",
+							"    pm.expect(id).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/activities/type/72244cb9-832c-4d2e-b83c-6bc9bfbb0b39",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"activities",
+						"type",
+						"72244cb9-832c-4d2e-b83c-6bc9bfbb0b39"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Activity Total Count",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Activity Total Count\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    todayActivitiesCount = jsonData.data.todayActivitiesCount\r",
+							"    overdueActivitiesCount = jsonData.data.overdueActivitiesCount\r",
+							"\r",
+							"    pm.expect(todayActivitiesCount).to.not.be.null;\r",
+							"    pm.expect(overdueActivitiesCount).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/activities/totalCount",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"activities",
+						"totalCount"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Overdue Activities",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get All Overdue Activities\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    displayName = jsonData.data.displayName\r",
+							"    creatorUserFullName = jsonData.data.creatorUserFullName\r",
+							"    primaryRelationType = jsonData.data.primaryRelationType\r",
+							"    secondaryRelationType = jsonData.data.secondaryRelationType\r",
+							"    taskStatus = jsonData.data.taskStatus\r",
+							"    activityTypeId = jsonData.data.activityTypeId\r",
+							"    periodId = jsonData.data.periodId\r",
+							"\r",
+							"    pm.expect(displayName).to.not.be.null;\r",
+							"    pm.expect(creatorUserFullName).to.not.be.null;\r",
+							"    pm.expect(primaryRelationType).to.not.be.null;\r",
+							"    pm.expect(secondaryRelationType).to.not.be.null;\r",
+							"    pm.expect(taskStatus).to.not.be.null;\r",
+							"    pm.expect(activityTypeId).to.not.be.null;\r",
+							"    pm.expect(periodId).to.not.be.null;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get All Overdue Activities\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"        \r",
+							"    userName = jsonData.data.items[0].owner.userName\r",
+							"    name = jsonData.data.items[0].owner.name\r",
+							"    surname = jsonData.data.items[0].owner.surname\r",
+							"    fullName = jsonData.data.items[0].owner.fullName\r",
+							"    \r",
+							"    pm.expect(userName).to.not.be.null;\r",
+							"    pm.expect(name).to.not.be.null;\r",
+							"    pm.expect(surname).to.not.be.null;\r",
+							"    pm.expect(fullName).to.not.be.null;\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/activities/overdue",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"activities",
+						"overdue"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Done Activities",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get All Done Activities\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    displayName = jsonData.data.displayName\r",
+							"    creatorUserFullName = jsonData.data.creatorUserFullName\r",
+							"    primaryRelationType = jsonData.data.primaryRelationType\r",
+							"    secondaryRelationType = jsonData.data.secondaryRelationType\r",
+							"    taskStatus = jsonData.data.taskStatus\r",
+							"    activityTypeId = jsonData.data.activityTypeId\r",
+							"    periodId = jsonData.data.periodId\r",
+							"\r",
+							"    pm.expect(displayName).to.not.be.null;\r",
+							"    pm.expect(creatorUserFullName).to.not.be.null;\r",
+							"    pm.expect(primaryRelationType).to.not.be.null;\r",
+							"    pm.expect(secondaryRelationType).to.not.be.null;\r",
+							"    pm.expect(taskStatus).to.not.be.null;\r",
+							"    pm.expect(activityTypeId).to.not.be.null;\r",
+							"    pm.expect(periodId).to.not.be.null;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Overdue Activity Owner Control\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"        \r",
+							"    userName = jsonData.data.items[0].owner.userName\r",
+							"    name = jsonData.data.items[0].owner.name\r",
+							"    surname = jsonData.data.items[0].owner.surname\r",
+							"    fullName = jsonData.data.items[0].owner.fullName\r",
+							"    \r",
+							"    pm.expect(userName).to.not.be.null;\r",
+							"    pm.expect(name).to.not.be.null;\r",
+							"    pm.expect(surname).to.not.be.null;\r",
+							"    pm.expect(fullName).to.not.be.null;\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/activities/done?startDate&endDate",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"activities",
+						"done"
+					],
+					"query": [
+						{
+							"key": "startDate",
+							"value": null
+						},
+						{
+							"key": "endDate",
+							"value": null
+						},
+						{
+							"key": "skipCount",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "maxResultCount",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Single Activity",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get Single Activity\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    displayName = jsonData.data.displayName\r",
+							"    activityTypeId = jsonData.data.activityTypeId\r",
+							" \r",
+							"    pm.expect(displayName).to.not.be.null;\r",
+							"    pm.expect(activityTypeId).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/activities/9c14ddf9-c562-4d2e-879d-706be482a041",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"activities",
+						"9c14ddf9-c562-4d2e-879d-706be482a041"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Entity Activities Total Count",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Entity Activities Total Count\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    todayActivitiesCount = jsonData.data.todayActivitiesCount\r",
+							"    overdueActivitiesCount = jsonData.data.overdueActivitiesCount\r",
+							"\r",
+							"    pm.expect(todayActivitiesCount).to.not.be.null;\r",
+							"    pm.expect(overdueActivitiesCount).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/activities/entityActivityTotalCount?modelId=3b98bf2a-3878-46ec-9602-4386e4334299",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"activities",
+						"entityActivityTotalCount"
+					],
+					"query": [
+						{
+							"key": "modelId",
+							"value": "3b98bf2a-3878-46ec-9602-4386e4334299"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search Participants",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Search Participants\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    type = jsonData.data[0].type\r",
+							"    id = jsonData.data[0].id\r",
+							"    email = jsonData.data[0].email\r",
+							"\r",
+							"    pm.expect(type).to.not.be.null;\r",
+							"    pm.expect(id).to.not.be.null;\r",
+							"    pm.expect(email).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/activities/searchParticipants?email=mhmutlu@bilgeadam.com",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"activities",
+						"searchParticipants"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "mhmutlu@bilgeadam.com"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

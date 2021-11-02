@@ -1,0 +1,531 @@
+{
+	"info": {
+		"_postman_id": "1935f360-e8c4-4121-91b0-551d4e2c4f94",
+		"name": "Report",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Dashboard",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get Dashboards\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    name = jsonData.data.name\r",
+							"    pm.expect(name).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/reports/dashboards",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"reports",
+						"dashboards"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Reports",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get Reports\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    name = jsonData.data.items[0].name\r",
+							"    source = jsonData.data.items[0].source\r",
+							"\r",
+							"    pm.expect(name).to.not.be.null;\r",
+							"    pm.expect(source).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/reports",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"reports"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find Dashboard",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Find Dashboard\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    name = jsonData.data.name\r",
+							"    pm.expect(name).to.not.be.null;\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/reports/dashboards/54d026f0-a783-412e-aa8c-70068fe889e6",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"reports",
+						"dashboards",
+						"54d026f0-a783-412e-aa8c-70068fe889e6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find Report",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Find Report\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    name = jsonData.data.name\r",
+							"    source = jsonData.data.source\r",
+							"    chartType = jsonData.data.chartParameter.type\r",
+							"    dimension = jsonData.data.chartParameter.dimension\r",
+							"    measure = jsonData.data.chartParameter.measure\r",
+							"\r",
+							"    pm.expect(name).to.not.be.null;\r",
+							"    pm.expect(source).to.not.be.null;\r",
+							"    pm.expect(chartType).to.not.be.null;\r",
+							"    pm.expect(dimension).to.not.be.null;\r",
+							"    pm.expect(measure).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/reports/b997a5a7-382c-4c8e-8f80-6d3d96edf8b7",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"reports",
+						"b997a5a7-382c-4c8e-8f80-6d3d96edf8b7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Cubes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get Cubes\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    name = jsonData.data[0].name\r",
+							"    datasource = jsonData.data[0].datasource\r",
+							"    dimensionsType = jsonData.data[0].dimensions[0].type\r",
+							"    dimensionsName = jsonData.data[0].dimensions[0].name\r",
+							"    measuresName = jsonData.data[0].dimensions[0].name\r",
+							"   \r",
+							"    pm.expect(name).to.not.be.null;\r",
+							"    pm.expect(datasource).to.not.be.null;\r",
+							"    pm.expect(dimensionsType).to.not.be.null;\r",
+							"    pm.expect(dimensionsName).to.not.be.null;\r",
+							"    pm.expect(measuresName).to.not.be.null;  \r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/reports/cubes",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"reports",
+						"cubes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Dimension Parameter",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get Dimension Parameter\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    type = jsonData.data[0].type\r",
+							"    name = jsonData.data[0].name\r",
+							"    propertyType = jsonData.data[0].propertyType\r",
+							"   \r",
+							"    pm.expect(type).to.not.be.null;\r",
+							"    pm.expect(name).to.not.be.null;\r",
+							"    pm.expect(propertyType).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/reports/b997a5a7-382c-4c8e-8f80-6d3d96edf8b7/dimensions",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"reports",
+						"b997a5a7-382c-4c8e-8f80-6d3d96edf8b7",
+						"dimensions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Measure Parameter",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get Measure Parameter\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    name = jsonData.data[0].name\r",
+							"    pm.expect(name).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/reports/b997a5a7-382c-4c8e-8f80-6d3d96edf8b7/measures",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"reports",
+						"b997a5a7-382c-4c8e-8f80-6d3d96edf8b7",
+						"measures"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Chart Parameter",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get Chart Parameter\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    type = jsonData.data.type\r",
+							"    dimension = jsonData.data.dimension\r",
+							"    measure = jsonData.data.measure\r",
+							"\r",
+							"    pm.expect(type).to.not.be.null;\r",
+							"    pm.expect(dimension).to.not.be.null;\r",
+							"    pm.expect(measure).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/reports/b997a5a7-382c-4c8e-8f80-6d3d96edf8b7/chart",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"reports",
+						"b997a5a7-382c-4c8e-8f80-6d3d96edf8b7",
+						"chart"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Chart Data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/reports/b997a5a7-382c-4c8e-8f80-6d3d96edf8b7/chart-data",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"reports",
+						"b997a5a7-382c-4c8e-8f80-6d3d96edf8b7",
+						"chart-data"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Report To Dashboard",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get Report To Dashboard\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    text = jsonData.data[0].text\r",
+							"    text = jsonData.data[0].text\r",
+							"\r",
+							"    pm.expect(text).to.not.be.null;\r",
+							"    pm.expect(text).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/reports/660a7281-7b11-4e87-99b0-8ad8311de51d/report-to-dashboard",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"reports",
+						"660a7281-7b11-4e87-99b0-8ad8311de51d",
+						"report-to-dashboard"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

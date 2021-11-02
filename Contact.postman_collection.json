@@ -1,0 +1,468 @@
+{
+	"info": {
+		"_postman_id": "89fccf66-1565-49ac-a07d-384945c4fca9",
+		"name": "Contact",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Find Contact with ContactId",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Find Contact with ContactId\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    name = jsonData.data.name\r",
+							"    surname = jsonData.data.surname\r",
+							"    \r",
+							"    pm.expect(name).to.not.be.null;\r",
+							"    pm.expect(surname).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/contacts/e679cbc2-214e-4155-aca3-0ed1a78f1016",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"contacts",
+						"e679cbc2-214e-4155-aca3-0ed1a78f1016"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Leads for Contact",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get Leads for Contact\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    fullName = jsonData.data.fullName\r",
+							"    pm.expect(fullName).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/contacts/e679cbc2-214e-4155-aca3-0ed1a78f1016/leads?firstName=Kübraa&lastName=Kılıççç&phone=905664738283&email=kilic@gmail.com&company=DemTech",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"contacts",
+						"e679cbc2-214e-4155-aca3-0ed1a78f1016",
+						"leads"
+					],
+					"query": [
+						{
+							"key": "firstName",
+							"value": "Kübraa"
+						},
+						{
+							"key": "lastName",
+							"value": "Kılıççç"
+						},
+						{
+							"key": "phone",
+							"value": "905664738283"
+						},
+						{
+							"key": "email",
+							"value": "kilic@gmail.com"
+						},
+						{
+							"key": "company",
+							"value": "DemTech"
+						},
+						{
+							"key": "sorting",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "skipCount",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "maxResultCount",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Existing Matching Contact",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/contacts/match",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"contacts",
+						"match"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Contact Address",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get Contact Address\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    name = jsonData.data.items[0].name\r",
+							"    city = jsonData.data.items[0].city\r",
+							"    state = jsonData.data.items[0].state\r",
+							"    description = jsonData.data.items[0].description\r",
+							" \r",
+							"    pm.expect(name).to.not.be.null;\r",
+							"    pm.expect(city).to.not.be.null;\r",
+							"    pm.expect(state).to.not.be.null;\r",
+							"    pm.expect(description).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/contacts/d46cea21-e9c6-45c4-b9d1-467c89c2388d/address",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"contacts",
+						"d46cea21-e9c6-45c4-b9d1-467c89c2388d",
+						"address"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find Contact Address",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Find Contact Address\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    contactId = jsonData.data.contactId\r",
+							"    id = jsonData.data.id\r",
+							"    name = jsonData.data.name\r",
+							"    city = jsonData.data.city\r",
+							"    state = jsonData.data.state\r",
+							"    description = jsonData.data.description\r",
+							"    \r",
+							"    pm.expect(contactId).to.not.be.null;\r",
+							"    pm.expect(id).to.not.be.null;   \r",
+							"    pm.expect(name).to.not.be.null;\r",
+							"    pm.expect(city).to.not.be.null;  \r",
+							"    pm.expect(state).to.not.be.null;\r",
+							"    pm.expect(description).to.not.be.null;   \r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/contacts/d46cea21-e9c6-45c4-b9d1-467c89c2388d/address/a4a59fc7-f14d-46a4-acd2-bf3c5c3ba2f1",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"contacts",
+						"d46cea21-e9c6-45c4-b9d1-467c89c2388d",
+						"address",
+						"a4a59fc7-f14d-46a4-acd2-bf3c5c3ba2f1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Products of Customers",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get Products of Customers\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    contactId = jsonData.data.items[0].contactId\r",
+							"    productId = jsonData.data.items[0].productId\r",
+							"    name = jsonData.data.items[0].name\r",
+							"    productCode = jsonData.data.items[0].productCode\r",
+							"    \r",
+							"    pm.expect(contactId).to.not.be.null;\r",
+							"    pm.expect(productId).to.not.be.null;   \r",
+							"    pm.expect(name).to.not.be.null;\r",
+							"    pm.expect(productCode).to.not.be.null;   \r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/contacts/f327e049-961e-4ffd-acf1-ce454086398d/products",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"contacts",
+						"f327e049-961e-4ffd-acf1-ce454086398d",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Contact of Opportunities",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get Contact of Opportunities\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    title = jsonData.data.opportunities[0].title\r",
+							"    pipelineId = jsonData.data.opportunities[0].pipelineId\r",
+							"    pipelineStepId = jsonData.data.opportunities[0].pipelineStepId \r",
+							"    pipelineStepName = jsonData.data.opportunities[0].pipelineStep.name\r",
+							"    pipelineName = jsonData.data.opportunities[0].pipeline.name\r",
+							"\r",
+							"    pm.expect(title).to.not.be.null;\r",
+							"    pm.expect(pipelineId).to.not.be.null;   \r",
+							"    pm.expect(pipelineStepId).to.not.be.null;\r",
+							"    pm.expect(pipelineStepName).to.not.be.null; \r",
+							"    pm.expect(pipelineName).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/contacts/e679cbc2-214e-4155-aca3-0ed1a78f1016/opportunities",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"contacts",
+						"e679cbc2-214e-4155-aca3-0ed1a78f1016",
+						"opportunities"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Accounts for Contact",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/contacts/accounts",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"contacts",
+						"accounts"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

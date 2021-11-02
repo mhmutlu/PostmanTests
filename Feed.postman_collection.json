@@ -1,0 +1,443 @@
+{
+	"info": {
+		"_postman_id": "0f763ece-4e7e-459e-a94c-9852c99d3469",
+		"name": "Feed",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All Feeds",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get All Feeds\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    ownerId = jsonData.data[0].ownerId\r",
+							"    userName = jsonData.data[0].owner.userName\r",
+							"    name = jsonData.data[0].owner.name\r",
+							"    surname = jsonData.data[0].owner.surname\r",
+							"    emailAddress = jsonData.data[0].owner.emailAddress\r",
+							"    fullName = jsonData.data[0].owner.fullName\r",
+							"    \r",
+							"    pm.expect(ownerId).to.not.be.null;\r",
+							"    pm.expect(userName).to.not.be.null;\r",
+							"    pm.expect(name).to.not.be.null;\r",
+							"    pm.expect(surname).to.not.be.null;\r",
+							"    pm.expect(emailAddress).to.not.be.null;\r",
+							"    pm.expect(fullName).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/feeds?sorting=date&skipCount=0&maxResultCount=10&isFollow=true&ownerGroupId=409d6765-4e2e-41c7-98c5-2acdc8a088ea&modelId=0ca026ed-df05-472c-8e44-cfb6c39aec88&endDate=2021-10-06T13%3A08%3A59.765Z",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"feeds"
+					],
+					"query": [
+						{
+							"key": "sorting",
+							"value": "date"
+						},
+						{
+							"key": "skipCount",
+							"value": "0"
+						},
+						{
+							"key": "maxResultCount",
+							"value": "10"
+						},
+						{
+							"key": "isFollow",
+							"value": "true"
+						},
+						{
+							"key": "ownerGroupId",
+							"value": "409d6765-4e2e-41c7-98c5-2acdc8a088ea"
+						},
+						{
+							"key": "ownerIds",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "module",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "elementCount",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "modelId",
+							"value": "0ca026ed-df05-472c-8e44-cfb6c39aec88"
+						},
+						{
+							"key": "startDate",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "endDate",
+							"value": "2021-10-06T13%3A08%3A59.765Z"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Parents",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get Parents\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    feedId = jsonData.data.parentFeeds[0].feedId\r",
+							"    modelId = jsonData.data.parentFeeds[0].modelId\r",
+							"    modelName = jsonData.data.parentFeeds[0].modelName\r",
+							"    modelTitle = jsonData.data.parentFeeds[0].modelTitle\r",
+							"\r",
+							"    pm.expect(feedId).to.not.be.null;\r",
+							"    pm.expect(modelId).to.not.be.null;\r",
+							"    pm.expect(modelName).to.not.be.null;\r",
+							"    pm.expect(modelTitle).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/feeds/getParents?sorting=date&skipCount=0&maxResultCount=10&isFollow=true&modelId=0ca026ed-df05-472c-8e44-cfb6c39aec88&endDate=2021-10-06T13%3A08%3A59.765Z",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"feeds",
+						"getParents"
+					],
+					"query": [
+						{
+							"key": "sorting",
+							"value": "date"
+						},
+						{
+							"key": "skipCount",
+							"value": "0"
+						},
+						{
+							"key": "maxResultCount",
+							"value": "10"
+						},
+						{
+							"key": "isFollow",
+							"value": "true"
+						},
+						{
+							"key": "ownerGroupId",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "ownerIds",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "module",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "elementCount",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "modelId",
+							"value": "0ca026ed-df05-472c-8e44-cfb6c39aec88"
+						},
+						{
+							"key": "startDate",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "endDate",
+							"value": "2021-10-06T13%3A08%3A59.765Z"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Comments",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get Comments\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    userName = jsonData.data[0].owner.userName\r",
+							"    name = jsonData.data[0].owner.name\r",
+							"    surname = jsonData.data[0].owner.surname\r",
+							"    emailAddress = jsonData.data[0].owner.emailAddress\r",
+							"    fullName = jsonData.data[0].owner.fullName\r",
+							"    message = jsonData.data[0].message\r",
+							"\r",
+							"    pm.expect(userName).to.not.be.null;\r",
+							"    pm.expect(name).to.not.be.null;\r",
+							"    pm.expect(surname).to.not.be.null;\r",
+							"    pm.expect(emailAddress).to.not.be.null;\r",
+							"    pm.expect(fullName).to.not.be.null;\r",
+							"    pm.expect(message).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/feeds/5ff3c6b9-f9d7-4631-add6-a93e7946a2e7/comments",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"feeds",
+						"5ff3c6b9-f9d7-4631-add6-a93e7946a2e7",
+						"comments"
+					],
+					"query": [
+						{
+							"key": "sorting",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "skipCount",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "maxResultCount",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Relations",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get Relations\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    feedId = jsonData.data.parentFeeds[0].feedId\r",
+							"    modelId = jsonData.data.parentFeeds[0].modelId\r",
+							"    modelName = jsonData.data.parentFeeds[0].modelName\r",
+							"\r",
+							"    pm.expect(feedId).to.not.be.null;\r",
+							"    pm.expect(modelId).to.not.be.null;\r",
+							"    pm.expect(modelName).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/feeds/getParents?endDate=2021-10-06T13%3A08%3A59.765Z&sorting=date&skipCount=0&maxResultCount=10",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"feeds",
+						"getParents"
+					],
+					"query": [
+						{
+							"key": "endDate",
+							"value": "2021-10-06T13%3A08%3A59.765Z"
+						},
+						{
+							"key": "sorting",
+							"value": "date"
+						},
+						{
+							"key": "skipCount",
+							"value": "0"
+						},
+						{
+							"key": "maxResultCount",
+							"value": "10"
+						},
+						{
+							"key": "takeCount",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "lastDate",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Like Info",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get Like Info\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    likeCount = jsonData.data.likeCount\r",
+							"    isUserLiked = jsonData.data.isUserLiked\r",
+							" \r",
+							"    pm.expect(likeCount).to.not.be.null;\r",
+							"    pm.expect(isUserLiked).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/feeds/getLikeInfo?feedId=5ff3c6b9-f9d7-4631-add6-a93e7946a2e7",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"feeds",
+						"getLikeInfo"
+					],
+					"query": [
+						{
+							"key": "feedId",
+							"value": "5ff3c6b9-f9d7-4631-add6-a93e7946a2e7"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

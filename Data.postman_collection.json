@@ -1,0 +1,429 @@
+{
+	"info": {
+		"_postman_id": "cc4b68bd-0204-4130-83d1-d7e5870fd6c7",
+		"name": "Data",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All Export Queue",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get All Export Queue\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    source = jsonData.data[0].source\r",
+							"    description = jsonData.data[0].description\r",
+							"    tenantId = jsonData.data[0].tenantId\r",
+							"    fileId = jsonData.data[0].fileId\r",
+							"    fileName = jsonData.data[0].fileName\r",
+							" \r",
+							"    pm.expect(source).to.not.be.null;\r",
+							"    pm.expect(description).to.not.be.null;\r",
+							"    pm.expect(tenantId).to.not.be.null;\r",
+							"    pm.expect(fileName).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/data/export",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"data",
+						"export"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Download Export File",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/data/export/50f59a81-b80c-4383-9ef8-4036ecd5eade",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"data",
+						"export",
+						"50f59a81-b80c-4383-9ef8-4036ecd5eade"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Import Queue",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get All Import Queue\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    modelName = jsonData.data[0].modelName\r",
+							"    status = jsonData.data[0].status\r",
+							"    requestedUserId = jsonData.data[0].requestedUserId\r",
+							"    id = jsonData.data[0].importQueueStatuses[0].id\r",
+							" \r",
+							"    pm.expect(modelName).to.not.be.null;\r",
+							"    pm.expect(status).to.not.be.null;\r",
+							"    pm.expect(requestedUserId).to.not.be.null;\r",
+							"    pm.expect(id).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/data/import",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"data",
+						"import"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Import Queue",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get Import Queue\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    modelName = jsonData.data.modelName\r",
+							"    status = jsonData.data.status\r",
+							"    requestedUserId = jsonData.data.requestedUserId\r",
+							"    id = jsonData.data.importQueueStatuses[0].id\r",
+							" \r",
+							"    pm.expect(modelName).to.not.be.null;\r",
+							"    pm.expect(status).to.not.be.null;\r",
+							"    pm.expect(requestedUserId).to.not.be.null;\r",
+							"    pm.expect(id).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/data/import/43949be5-43f5-4413-a983-0bc706cd21b4",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"data",
+						"import",
+						"43949be5-43f5-4413-a983-0bc706cd21b4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get File Storage Info",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/data/limit",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"data",
+						"limit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get File Storage Info",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get Storage Size And Limit\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    totalRowLimit = jsonData.data.totalRowLimit\r",
+							"    model = jsonData.data.usageRowLimit[0].model\r",
+							"    count = jsonData.data.usageRowLimit[0].count\r",
+							" \r",
+							"    pm.expect(totalRowLimit).to.not.be.null;\r",
+							"    pm.expect(model).to.not.be.null;\r",
+							"    pm.expect(count).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/data/limit/storage",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"data",
+						"limit",
+						"storage"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Import Types",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get Import Types\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    modelType = jsonData.data[0].modelType\r",
+							"    sampleUrls = jsonData.data[0].sampleUrls\r",
+							"    key = jsonData.data[0].sampleUrls[0].key\r",
+							"    value = jsonData.data[0].sampleUrls[0].value\r",
+							" \r",
+							"    pm.expect(modelType).to.not.be.null;\r",
+							"    pm.expect(sampleUrls).to.not.be.null;\r",
+							"    pm.expect(key).to.not.be.null;\r",
+							"    pm.expect(value).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/data/import/types",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"data",
+						"import",
+						"types"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Export Types",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get Export Types\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    modelType = jsonData.data[0].modelType\r",
+							"    sampleUrl = jsonData.data[0].sampleUrl\r",
+							"\r",
+							"    pm.expect(modelType).to.not.be.null;\r",
+							"    pm.expect(sampleUrl).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/data/export/types",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"data",
+						"export",
+						"types"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

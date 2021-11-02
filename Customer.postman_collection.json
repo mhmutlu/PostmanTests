@@ -1,0 +1,383 @@
+{
+	"info": {
+		"_postman_id": "5ff651e7-e657-4c44-9d1b-5a08466163fd",
+		"name": "Customer",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Existing Matching Account",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/customers/match",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"customers",
+						"match"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find Customer with CustomerId",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Find Customer with CustomerId\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    name = jsonData.data.name\r",
+							"    pm.expect(name).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/customers/f00784b7-7eb2-4658-97c0-735360017f7d",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"customers",
+						"f00784b7-7eb2-4658-97c0-735360017f7d"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Leads for Customer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get Leads for Customer\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    fullName = jsonData.data.items[0].fullName\r",
+							"    account = jsonData.data.items[0].account\r",
+							"\r",
+							"    pm.expect(fullName).to.not.be.null;\r",
+							"    pm.expect(account).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/customers/21a7e877-d9f7-4f95-9da3-b11b21f8cb15/leads",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"customers",
+						"21a7e877-d9f7-4f95-9da3-b11b21f8cb15",
+						"leads"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Opportunities For Customer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get Opportunities For Customer\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    title = jsonData.data.opportunities[0].title\r",
+							"    pipelineId = jsonData.data.opportunities[0].pipelineId\r",
+							"    pipelineStepId = jsonData.data.opportunities[0].pipelineStepId\r",
+							"    accountId = jsonData.data.opportunities[0].accountId\r",
+							"    accountName = jsonData.data.opportunities[0].account.name\r",
+							"\r",
+							"    pipelineStepName = jsonData.data.opportunities[0].pipelineStep.name\r",
+							"    pipelineName = jsonData.data.opportunities[0].pipeline.name\r",
+							"    \r",
+							"    currencyName = jsonData.data.opportunities[0].currency.name\r",
+							"    currencyCode = jsonData.data.opportunities[0].currency.code\r",
+							"    currencySymbol = jsonData.data.opportunities[0].currency.symbol\r",
+							"   \r",
+							"    pm.expect(title).to.not.be.null;\r",
+							"    pm.expect(pipelineId).to.not.be.null;\r",
+							"    pm.expect(pipelineStepId).to.not.be.null;\r",
+							"    pm.expect(accountId).to.not.be.null;\r",
+							"    pm.expect(accountName).to.not.be.null;\r",
+							"\r",
+							"    pm.expect(pipelineStepName).to.not.be.null;\r",
+							"    pm.expect(pipelineName).to.not.be.null;\r",
+							"    \r",
+							"    pm.expect(currencyName).to.not.be.null;\r",
+							"    pm.expect(currencyCode).to.not.be.null;\r",
+							"    pm.expect(currencySymbol).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/customers/21a7e877-d9f7-4f95-9da3-b11b21f8cb15/opportunities",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"customers",
+						"21a7e877-d9f7-4f95-9da3-b11b21f8cb15",
+						"opportunities"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Contacts For Customer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/customers/contacts",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"customers",
+						"contacts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Products For Customer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"    pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get Products For Customer\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"\r",
+							"    name = jsonData.data.items[0].name\r",
+							"    productCode = jsonData.data.items[0].productCode\r",
+							"    productId = jsonData.data.items[0].productId\r",
+							"    accountId = jsonData.data.items[0].accountId\r",
+							"\r",
+							"    pm.expect(name).to.not.be.null;\r",
+							"    pm.expect(productCode).to.not.be.null;\r",
+							"    pm.expect(productId).to.not.be.null;\r",
+							"    pm.expect(accountId).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/customers/21a7e877-d9f7-4f95-9da3-b11b21f8cb15/products",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"customers",
+						"21a7e877-d9f7-4f95-9da3-b11b21f8cb15",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Customer Address",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get Customer Address\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    name = jsonData.data.items[0].name\r",
+							"    city = jsonData.data.items[0].city\r",
+							"    state = jsonData.data.items[0].state\r",
+							"    description = jsonData.data.items[0].description\r",
+							" \r",
+							"    pm.expect(name).to.not.be.null;\r",
+							"    pm.expect(city).to.not.be.null;\r",
+							"    pm.expect(state).to.not.be.null;\r",
+							"    pm.expect(description).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/customers/3255fa11-0bbe-41df-8a0b-6a49a8b5cc88/address",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"customers",
+						"3255fa11-0bbe-41df-8a0b-6a49a8b5cc88",
+						"address"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

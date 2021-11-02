@@ -1,0 +1,168 @@
+{
+	"info": {
+		"_postman_id": "8463803f-9de8-4d4e-86cb-36096126a355",
+		"name": "Forecast",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Filter Sales",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Filter Sales\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    columnName = jsonData.data.columns[0].name\r",
+							"    totalAmount = jsonData.data.columns[0].overview.totalAmount\r",
+							"    estimateAmount = jsonData.data.columns[0].overview.estimateAmount\r",
+							"    totalAmountString = jsonData.data.columns[0].overview.totalAmountString\r",
+							"    estimateAmountString = jsonData.data.columns[0].overview.estimateAmountString\r",
+							"\r",
+							"    pm.expect(columnName).to.not.be.null;\r",
+							"    pm.expect(totalAmount).to.not.be.null;\r",
+							"    pm.expect(estimateAmount).to.not.be.null;\r",
+							"    pm.expect(totalAmountString).to.not.be.null;\r",
+							"    pm.expect(estimateAmountString).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/forecasts/sales?firstDate=2021-09-13T09%3A55%3A17.043Z&pipelineId=1590ca55-e724-428a-9cb3-b86381c39680&ownerGroupId=1590ca55-e724-428a-9cb3-b86381c39680",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"forecasts",
+						"sales"
+					],
+					"query": [
+						{
+							"key": "firstDate",
+							"value": "2021-09-13T09%3A55%3A17.043Z"
+						},
+						{
+							"key": "pipelineId",
+							"value": "1590ca55-e724-428a-9cb3-b86381c39680"
+						},
+						{
+							"key": "ownerGroupId",
+							"value": "1590ca55-e724-428a-9cb3-b86381c39680"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Filter Payment",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Filter Payment\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    columnName = jsonData.data.columns[0].name\r",
+							"    totalAmount = jsonData.data.columns[0].overview.totalAmount\r",
+							"    estimateAmount = jsonData.data.columns[0].overview.estimateAmount\r",
+							"    totalAmountString = jsonData.data.columns[0].overview.totalAmountString\r",
+							"\r",
+							"    itemId = jsonData.data.columns[0].items[0].id\r",
+							"    title = jsonData.data.columns[0].items[0].title\r",
+							"    amount = jsonData.data.columns[0].items[0].amount\r",
+							"    amountString = jsonData.data.columns[0].items[0].amountString\r",
+							"    isWon = jsonData.data.columns[0].items[0].isWon\r",
+							"    companyId = jsonData.data.columns[0].items[0].company.id\r",
+							"    companyName = jsonData.data.columns[0].items[0].company.name\r",
+							"   \r",
+							"    pm.expect(columnName).to.not.be.null;\r",
+							"    pm.expect(totalAmount).to.not.be.null;\r",
+							"    pm.expect(estimateAmount).to.not.be.null;\r",
+							"    pm.expect(totalAmountString).to.not.be.null;\r",
+							"\r",
+							"    pm.expect(itemId).to.not.be.null;\r",
+							"    pm.expect(title).to.not.be.null;\r",
+							"    pm.expect(amount).to.not.be.null;\r",
+							"    pm.expect(amountString).to.not.be.null;\r",
+							"    pm.expect(isWon).to.not.be.null;\r",
+							"    pm.expect(companyId).to.not.be.null;\r",
+							"    pm.expect(companyName).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/forecasts/sales/payment?firstDate=2021-10-05T12%3A08%3A15.836Z&pipelineId=32c3a19e-5427-4e6a-bdb2-88d16649b003&ownerGroupId=1590ca55-e724-428a-9cb3-b86381c39680",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"forecasts",
+						"sales",
+						"payment"
+					],
+					"query": [
+						{
+							"key": "firstDate",
+							"value": "2021-10-05T12%3A08%3A15.836Z"
+						},
+						{
+							"key": "pipelineId",
+							"value": "32c3a19e-5427-4e6a-bdb2-88d16649b003"
+						},
+						{
+							"key": "ownerGroupId",
+							"value": "1590ca55-e724-428a-9cb3-b86381c39680"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,695 @@
+{
+	"info": {
+		"_postman_id": "912513db-6823-4b51-927e-325e7b31fd91",
+		"name": "Common",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Localization",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get Localization\", () => {\r",
+							"    var jsonData = pm.response.json()\r",
+							"    \r",
+							"    cultureInfo = jsonData.data[0].cultureInfo\r",
+							"    name = jsonData.data[0].name\r",
+							"    value = jsonData.data[0].value\r",
+							"\r",
+							"    pm.expect(cultureInfo).to.not.be.null\r",
+							"    pm.expect(name).to.not.be.null\r",
+							"    pm.expect(value).to.not.be.null\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/commons/localization",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"commons",
+						"localization"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Menu Items",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get Menu Items\", () => {\r",
+							"    var jsonData = pm.response.json()\r",
+							"    \r",
+							"    name = jsonData.data[0].name\r",
+							"    displayName = jsonData.data[0].displayName\r",
+							"    url = jsonData.data[0].url\r",
+							"    \r",
+							"    pm.expect(name).to.not.be.null\r",
+							"    pm.expect(displayName).to.not.be.null\r",
+							"    pm.expect(url).to.not.be.null\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/commons/menuItems",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"commons",
+						"menuItems"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Categories",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get All Categories\", () => {\r",
+							"    var jsonData = pm.response.json()\r",
+							"    \r",
+							"    name = jsonData.data[0].name\r",
+							"    code = jsonData.data[0].code\r",
+							"    \r",
+							"    pm.expect(name).to.not.be.null\r",
+							"    pm.expect(code).to.not.be.null\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/commons/allCategories",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"commons",
+						"allCategories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find Category",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Find Category\", () => {\r",
+							"    var jsonData = pm.response.json()\r",
+							"    \r",
+							"    name = jsonData.data.name\r",
+							"    code = jsonData.data.code\r",
+							"    \r",
+							"    pm.expect(name).to.not.be.null\r",
+							"    pm.expect(code).to.not.be.null\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/commons/category/activityPurposes",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"commons",
+						"category",
+						"activityPurposes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Category",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get Category\", () => {\r",
+							"    var jsonData = pm.response.json()\r",
+							"    \r",
+							"    code = jsonData.data.code\r",
+							"    creatorUserId = jsonData.data.creatorUserId\r",
+							"    id = jsonData.data.id\r",
+							"    \r",
+							"    pm.expect(code).to.not.be.null\r",
+							"    pm.expect(creatorUserId).to.not.be.null\r",
+							"    pm.expect(id).to.not.be.null\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/commons/category/get/Lead Statuses",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"commons",
+						"category",
+						"get",
+						"Lead Statuses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Countries Check",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Countries check\", () => {\r",
+							"    var jsonData = pm.response.json()\r",
+							"    \r",
+							"    name = jsonData.data[0].name\r",
+							"    code = jsonData.data[0].code\r",
+							"    flagUrl = jsonData.data[0].flagUrl\r",
+							"    \r",
+							"    pm.expect(name).to.not.be.null\r",
+							"    pm.expect(code).to.not.be.null\r",
+							"    pm.expect(flagUrl).to.not.be.null\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/commons/countries",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"commons",
+						"countries"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Tag By ParentId",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/commons/tagByParentId?parentId=75966242-2af0-45e0-ba1f-8f594e16a4f9&name=test",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"commons",
+						"tagByParentId"
+					],
+					"query": [
+						{
+							"key": "categoryName",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "parentId",
+							"value": "75966242-2af0-45e0-ba1f-8f594e16a4f9"
+						},
+						{
+							"key": "name",
+							"value": "test"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find Tag",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Find Tag\", () => {\r",
+							"    var jsonData = pm.response.json()\r",
+							"    \r",
+							"    categoryId = jsonData.data.categoryId\r",
+							"    code = jsonData.data.code\r",
+							"    creatorUserId = jsonData.data.creatorUserId\r",
+							"    id = jsonData.data.id\r",
+							"    \r",
+							"    pm.expect(categoryId).to.not.be.null\r",
+							"    pm.expect(code).to.not.be.null\r",
+							"    pm.expect(creatorUserId).to.not.be.null\r",
+							"    pm.expect(id).to.not.be.null\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/commons/tag?categoryName=Lead Statuses&code=Waiting&name=Waiting",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"commons",
+						"tag"
+					],
+					"query": [
+						{
+							"key": "categoryName",
+							"value": "Lead Statuses"
+						},
+						{
+							"key": "code",
+							"value": "Waiting"
+						},
+						{
+							"key": "name",
+							"value": "Waiting"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Tag By Category",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Get Tag By Category\", () => {\r",
+							"    var jsonData = pm.response.json()\r",
+							"    \r",
+							"    categoryId = jsonData.data.categoryId\r",
+							"    code = jsonData.data.code\r",
+							"    creatorUserId = jsonData.data.creatorUserId\r",
+							"    id = jsonData.data.id\r",
+							"    \r",
+							"    pm.expect(categoryId).to.not.be.null\r",
+							"    pm.expect(code).to.not.be.null\r",
+							"    pm.expect(creatorUserId).to.not.be.null\r",
+							"    pm.expect(id).to.not.be.null\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/commons/tagByCategory?categoryName=Lead Statuses",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"commons",
+						"tagByCategory"
+					],
+					"query": [
+						{
+							"key": "categoryName",
+							"value": "Lead Statuses"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find Tag By Category Name And ParentId",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/commons/tagByCategoryAndParent?name=Waiting&parentId=8250e66d-ea60-4385-88c3-45b54da27d4f",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"commons",
+						"tagByCategoryAndParent"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Waiting"
+						},
+						{
+							"key": "parentId",
+							"value": "8250e66d-ea60-4385-88c3-45b54da27d4f"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find Tag By Id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Find Tag By Id\", () => {\r",
+							"    var jsonData = pm.response.json()\r",
+							"    \r",
+							"    categoryId = jsonData.data.categoryId\r",
+							"    creatorUserId = jsonData.data.creatorUserId\r",
+							"    id = jsonData.data.id\r",
+							"    \r",
+							"    pm.expect(categoryId).to.not.be.null\r",
+							"    pm.expect(creatorUserId).to.not.be.null\r",
+							"    pm.expect(id).to.not.be.null\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/commons/tagById/038fa883-fb0f-406c-8ebb-930bf6e7d223",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"commons",
+						"tagById",
+						"038fa883-fb0f-406c-8ebb-930bf6e7d223"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Recent Items",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get Recent Items\", () => {\r",
+							"    var jsonData = pm.response.json()\r",
+							"    \r",
+							"    type = jsonData.data.type\r",
+							"    displayName = jsonData.data.displayName\r",
+							"    path = jsonData.data.path\r",
+							"    id = jsonData.data.id\r",
+							"    \r",
+							"    pm.expect(type).to.not.be.null\r",
+							"    pm.expect(displayName).to.not.be.null\r",
+							"    pm.expect(path).to.not.be.null\r",
+							"    pm.expect(id).to.not.be.null\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/commons/recentItems?type=item_added&takeCount=10",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"commons",
+						"recentItems"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "item_added"
+						},
+						{
+							"key": "takeCount",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

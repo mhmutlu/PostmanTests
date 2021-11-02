@@ -1,0 +1,155 @@
+{
+	"info": {
+		"_postman_id": "b779dca7-ea65-48a6-b862-2532ea6bd537",
+		"name": "File",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Download File",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/files/download?fileId=0655475f-4fea-454c-9a23-47d968058ff5&access_token={{Token}}",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"files",
+						"download"
+					],
+					"query": [
+						{
+							"key": "fileId",
+							"value": "0655475f-4fea-454c-9a23-47d968058ff5"
+						},
+						{
+							"key": "access_token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Download File By Name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/files/downloadByName?fileName=Import Samples (contact).xlsx&access_token={{Token}}",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"files",
+						"downloadByName"
+					],
+					"query": [
+						{
+							"key": "fileName",
+							"value": "Import Samples (contact).xlsx"
+						},
+						{
+							"key": "access_token",
+							"value": "{{Token}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All File",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/files/entities",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"files",
+						"entities"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

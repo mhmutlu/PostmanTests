@@ -1,0 +1,297 @@
+{
+	"info": {
+		"_postman_id": "c003e56b-af0e-4b7e-8e11-2f8b26a19fc5",
+		"name": "Quote",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All Quotes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get All Quotes\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    title = jsonData.data.items[0].title\r",
+							"    date = jsonData.data.items[0].date\r",
+							"    opportunityId = jsonData.data.items[0].opportunityId\r",
+							"    contactId = jsonData.data.items[0].contactId\r",
+							" \r",
+							"    pm.expect(title).to.not.be.null;\r",
+							"    pm.expect(date).to.not.be.null;\r",
+							"    pm.expect(opportunityId).to.not.be.null;\r",
+							"    pm.expect(contactId).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/quotes",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"quotes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find Quote",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Find Quote\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    title = jsonData.data.title\r",
+							"    date = jsonData.data.date\r",
+							"    opportunityId = jsonData.data.opportunityId\r",
+							"  \r",
+							"    pm.expect(title).to.not.be.null;\r",
+							"    pm.expect(date).to.not.be.null;\r",
+							"    pm.expect(opportunityId).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/quotes/e8486fa3-8b91-4fa5-a9f1-365a56ea6f52",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"quotes",
+						"e8486fa3-8b91-4fa5-a9f1-365a56ea6f52"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All History",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get All History\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    title = jsonData.data.items[0].title\r",
+							"    date = jsonData.data.items[0].date\r",
+							"    opportunityId = jsonData.data.items[0].opportunityId\r",
+							"\r",
+							"    currencyName = jsonData.data.items[0].currency.name\r",
+							"    currencyCode = jsonData.data.items[0].currency.code\r",
+							"    currencySymbol = jsonData.data.items[0].currency.symbol\r",
+							"  \r",
+							"    pm.expect(title).to.not.be.null;\r",
+							"    pm.expect(date).to.not.be.null;\r",
+							"    pm.expect(opportunityId).to.not.be.null;\r",
+							"\r",
+							"    pm.expect(currencyName).to.not.be.null;\r",
+							"    pm.expect(currencyCode).to.not.be.null;\r",
+							"    pm.expect(currencySymbol).to.not.be.null;\r",
+							" \r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/quotes/history",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"quotes",
+						"history"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find History",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Find History\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    title = jsonData.data.title\r",
+							"    date = jsonData.data.date\r",
+							"   \r",
+							"    currencyName = jsonData.data.currency.name\r",
+							"    currencyCode = jsonData.data.currency.code\r",
+							"    currencySymbol = jsonData.data.currency.symbol\r",
+							"  \r",
+							"    pm.expect(title).to.not.be.null;\r",
+							"    pm.expect(date).to.not.be.null;\r",
+							"  \r",
+							"    pm.expect(currencyName).to.not.be.null;\r",
+							"    pm.expect(currencyCode).to.not.be.null;\r",
+							"    pm.expect(currencySymbol).to.not.be.null;\r",
+							" \r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/quotes/histories/0e8cc738-8ebc-4ca9-811d-36506d24bf9a",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"quotes",
+						"histories",
+						"0e8cc738-8ebc-4ca9-811d-36506d24bf9a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Calculate Money Unites with QuoteIds",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Calculate Money Unites with QuoteIds\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    name = jsonData.data.baseCurrency.name\r",
+							"    code = jsonData.data.baseCurrency.code\r",
+							"    symbol = jsonData.data.baseCurrency.symbol\r",
+							"\r",
+							"    pm.expect(name).to.not.be.null;\r",
+							"    pm.expect(code).to.not.be.null;\r",
+							"    pm.expect(symbol).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/quotes/quote-calculate",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"quotes",
+						"quote-calculate"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

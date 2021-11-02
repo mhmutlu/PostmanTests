@@ -1,0 +1,210 @@
+{
+	"info": {
+		"_postman_id": "9403e74a-26ba-46cb-87f7-0d2c878208a0",
+		"name": "Payment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Find Payment",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Find Payment\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    date = jsonData.data.date\r",
+							"    amount = jsonData.data.amount\r",
+							"\r",
+							"    pm.expect(date).to.not.be.null;\r",
+							"    pm.expect(amount).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/payments/3942b3fc-28c3-4200-bcb8-c10580b51f2d",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"payments",
+						"3942b3fc-28c3-4200-bcb8-c10580b51f2d"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Payments For Customer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/payments",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"payments"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Payment Overview",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Payment Overview\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    displayName = jsonData.data.items[0].displayName\r",
+							"    value = jsonData.data.items[0].value\r",
+							"\r",
+							"    pm.expect(displayName).to.not.be.null;\r",
+							"    pm.expect(value).to.not.be.null;\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/payments/overview",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"payments",
+						"overview"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Calculate Money Unites with PaymentIds",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Calculate Money Unites with PaymentIds\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    name = jsonData.data.baseCurrency.name\r",
+							"    code = jsonData.data.baseCurrency.code\r",
+							"    symbol = jsonData.data.baseCurrency.symbol\r",
+							"\r",
+							"    pm.expect(name).to.not.be.null;\r",
+							"    pm.expect(code).to.not.be.null;\r",
+							"    symbol = jsonData.data.code\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/payments/payment-calculate",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"payments",
+						"payment-calculate"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

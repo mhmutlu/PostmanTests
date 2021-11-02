@@ -1,0 +1,677 @@
+{
+	"info": {
+		"_postman_id": "299a3064-6d8d-466d-92d7-1f49ccf8611c",
+		"name": "Lead",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Status History",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/leads/485c0c9b-72a7-49e8-a9cf-123ccadef730/statusHistory",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"leads",
+						"485c0c9b-72a7-49e8-a9cf-123ccadef730",
+						"statusHistory"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Pie Chart Data for Lead",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/leads/pieChart",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"leads",
+						"pieChart"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Lead Count Based on Status",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get Lead Count Based on Status\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"\r",
+							"    data = jsonData.data\r",
+							"    pm.expect(data).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/leads/countBasedOnStatus",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"leads",
+						"countBasedOnStatus"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Last 24 Hour Added or Updated Leads",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Last 24 Hour Added or Updated\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"\r",
+							"    data = jsonData.data\r",
+							"    pm.expect(data).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/leads/last24HourAddedOrUpdatedLeads",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"leads",
+						"last24HourAddedOrUpdatedLeads"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Status Bar",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Lead data\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    leadId = jsonData.data.leadId\r",
+							"    currentStatusId = jsonData.data.currentStatusId\r",
+							"\r",
+							"    pm.expect(leadId).to.not.be.null;\r",
+							"    pm.expect(currentStatusId).to.not.be.null;\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Lead data\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    code = jsonData.data.leadStatuses[0].code\r",
+							"    name = jsonData.data.leadStatuses[0].name\r",
+							"\r",
+							"    pm.expect(code).to.not.be.null;\r",
+							"    pm.expect(name).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/leads/dda1a4bd-fec1-47a2-ba2a-4b422af0d1a2/statusBar",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"leads",
+						"dda1a4bd-fec1-47a2-ba2a-4b422af0d1a2",
+						"statusBar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Wating Leads",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get Waiting Leads\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    fullName = jsonData.data[0].fullName\r",
+							"    firstName = jsonData.data[0].firstName\r",
+							"    lastName = jsonData.data[0].lastName\r",
+							"\r",
+							"    pm.expect(fullName).to.not.be.null;\r",
+							"    pm.expect(firstName).to.not.be.null;\r",
+							"    pm.expect(lastName).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/leads/waiting",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"leads",
+						"waiting"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Overview",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Overview\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    displayName = jsonData.data.items[0].displayName\r",
+							"    value = jsonData.data.items[0].value\r",
+							"\r",
+							"    pm.expect(displayName).to.not.be.null;\r",
+							"    pm.expect(value).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/leads/overview?convertedAccountId=b9fda1aa-e6b0-48fa-9b85-9b2d1fddc53d&convertedContactId=0387b9f9-04ff-4a25-b0dd-1ec63f2ad9f7",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"leads",
+						"overview"
+					],
+					"query": [
+						{
+							"key": "convertedAccountId",
+							"value": "b9fda1aa-e6b0-48fa-9b85-9b2d1fddc53d"
+						},
+						{
+							"key": "convertedContactId",
+							"value": "0387b9f9-04ff-4a25-b0dd-1ec63f2ad9f7"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find Lead with LeadId",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Find Lead with LeadId\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    fullName = jsonData.data.fullName\r",
+							"    firstName = jsonData.data.firstName\r",
+							"    lastName = jsonData.data.lastName\r",
+							"\r",
+							"    pm.expect(fullName).to.not.be.null;\r",
+							"    pm.expect(firstName).to.not.be.null;\r",
+							"    pm.expect(lastName).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/leads/78725353-f766-4118-8cf1-5f604a37625e",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"leads",
+						"78725353-f766-4118-8cf1-5f604a37625e"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All with Filter",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get All with Filter\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    fullName = jsonData.data.items[0].fullName\r",
+							"    firstName = jsonData.data.items[0].firstName\r",
+							"    lastName = jsonData.data.items[0].lastName\r",
+							"\r",
+							"    pm.expect(fullName).to.not.be.null;\r",
+							"    pm.expect(firstName).to.not.be.null;\r",
+							"    pm.expect(lastName).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/leads?ownerId=129&statusId=24282015-30ad-4530-9211-4c09b4cf5ac9&tenantId=24",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"leads"
+					],
+					"query": [
+						{
+							"key": "ownerId",
+							"value": "129"
+						},
+						{
+							"key": "statusId",
+							"value": "24282015-30ad-4530-9211-4c09b4cf5ac9"
+						},
+						{
+							"key": "tenantId",
+							"value": "24"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Products for Lead",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/leads/products?leadId=78725353-f766-4118-8cf1-5f604a37625e",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"leads",
+						"products"
+					],
+					"query": [
+						{
+							"key": "sorting",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "skipCount",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "maxResultCount",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "leadId",
+							"value": "78725353-f766-4118-8cf1-5f604a37625e"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Relational Leads for Customer",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/leads/customers/89e105d6-0a6a-47af-9c3a-4be7e5f00837/relationalLeads",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"leads",
+						"customers",
+						"89e105d6-0a6a-47af-9c3a-4be7e5f00837",
+						"relationalLeads"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Opportunity for Convert Lead",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get Opportunity for Lead\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    title = jsonData.data.title\r",
+							"    pipelineName = jsonData.data.pipeline.name\r",
+							"    pipelineStep = jsonData.data.pipelineStep.name\r",
+							"    leadFullName = jsonData.data.lead.fullName\r",
+							"    leadFirstName = jsonData.data.lead.firstName\r",
+							"    leadLastName = jsonData.data.lead.lastName\r",
+							"\r",
+							"    currencyName = jsonData.data.estimatedAmountBaseCurrency.currency.name\r",
+							"    currencyCode = jsonData.data.estimatedAmountBaseCurrency.currency.code\r",
+							"    currencySymbol = jsonData.data.estimatedAmountBaseCurrency.currency.symbol\r",
+							"\r",
+							"    pm.expect(title).to.not.be.null;\r",
+							"    pm.expect(pipelineName).to.not.be.null;\r",
+							"    pm.expect(pipelineStep).to.not.be.null;\r",
+							"    pm.expect(leadFullName).to.not.be.null;\r",
+							"    pm.expect(leadFirstName).to.not.be.null;\r",
+							"    pm.expect(leadLastName).to.not.be.null;\r",
+							"\r",
+							"    pm.expect(currencyName).to.not.be.null;\r",
+							"    pm.expect(currencyCode).to.not.be.null;\r",
+							"    pm.expect(currencySymbol).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/leads/8e0f1fe4-f08f-477d-8845-ede48df92c5a/opportunity",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"leads",
+						"8e0f1fe4-f08f-477d-8845-ede48df92c5a",
+						"opportunity"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

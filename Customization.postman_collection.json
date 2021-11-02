@@ -1,0 +1,172 @@
+{
+	"info": {
+		"_postman_id": "aef30cff-bd5c-47cc-a143-39490035955f",
+		"name": "Customization",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Models",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get Models\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    modelName = jsonData.data[0].modelName\r",
+							"    displayKey = jsonData.data[0].displayKey\r",
+							" \r",
+							"    pm.expect(modelName).to.not.be.null;\r",
+							"    pm.expect(displayKey).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/customizations/models",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"customizations",
+						"models"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Field",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get Field\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    name = jsonData.data.name\r",
+							"    fieldName = jsonData.data.fieldName\r",
+							"    modelName = jsonData.data.modelName\r",
+							" \r",
+							"    pm.expect(name).to.not.be.null;\r",
+							"    pm.expect(fieldName).to.not.be.null;\r",
+							"    pm.expect(modelName).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/customizations/models/lead/fields/FullName",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"customizations",
+						"models",
+						"lead",
+						"fields",
+						"FullName"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Custom Field",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get Custom Field\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    modelName = jsonData.data.modelName\r",
+							"    displayKey = jsonData.data.displayKey\r",
+							" \r",
+							"    pm.expect(modelName).to.not.be.null;\r",
+							"    pm.expect(displayKey).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/customizations/models/lead/field",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"customizations",
+						"models",
+						"lead",
+						"field"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

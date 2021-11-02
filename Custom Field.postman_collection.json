@@ -1,0 +1,66 @@
+{
+	"info": {
+		"_postman_id": "25d23c90-5c80-404d-a36d-440a8f84ca99",
+		"name": "Custom Field",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Custom Field Model",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get Custom Field Model\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    displayName = jsonData.data[0].displayName\r",
+							"    name = jsonData.data[0].name\r",
+							"    dataType = jsonData.data[0].dataType\r",
+							"    modelName = jsonData.data[0].modelName\r",
+							"    \r",
+							"    pm.expect(displayName).to.not.be.null;\r",
+							"    pm.expect(name).to.not.be.null;\r",
+							"    pm.expect(dataType).to.not.be.null;\r",
+							"    pm.expect(modelName).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/customFields/models/lead",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"customFields",
+						"models",
+						"lead"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

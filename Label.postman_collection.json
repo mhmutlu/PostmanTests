@@ -1,0 +1,63 @@
+{
+	"info": {
+		"_postman_id": "28cebfb2-812d-44d2-ac16-11d72e4baf39",
+		"name": "Label",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Labels",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get Labels\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"\r",
+							"    name = jsonData.data.name\r",
+							"    pm.expect(name).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/labels?code=lead_labels",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"labels"
+					],
+					"query": [
+						{
+							"key": "code",
+							"value": "lead_labels"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

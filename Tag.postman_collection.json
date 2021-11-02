@@ -1,0 +1,63 @@
+{
+	"info": {
+		"_postman_id": "90062ede-1f7f-466a-bf8f-c9c10c4a217f",
+		"name": "Tag",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Tag By CategoryName",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get Tag By CategoryName\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    name = jsonData.data.name\r",
+							"    pm.expect(name).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "dpOr26pNI60lZDLgZxtZIkNa5vYw2J76txOEj8DHtHGPriJjDmt3vI6sSom6XsKz",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/tags?categoryName=Mehmet Harun",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"tags"
+					],
+					"query": [
+						{
+							"key": "categoryName",
+							"value": "Mehmet Harun"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

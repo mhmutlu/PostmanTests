@@ -1,0 +1,661 @@
+{
+	"info": {
+		"_postman_id": "74c04d4d-dcbd-47dc-bd8b-920b3e2c3b01",
+		"name": "Workflow",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All Workflows",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get All Workflows\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    name = jsonData.data[0].name\r",
+							"    pm.expect(name).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/workflows",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"workflows"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Workflow History",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/workflows/00fbbc39-26a2-426d-b289-8def7bb40eaa/history",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"workflows",
+						"00fbbc39-26a2-426d-b289-8def7bb40eaa",
+						"history"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find Workflow",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Find Workflow\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    name = jsonData.data.name\r",
+							"    pm.expect(name).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/workflows/00fbbc39-26a2-426d-b289-8def7bb40eaa",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"workflows",
+						"00fbbc39-26a2-426d-b289-8def7bb40eaa"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Notification Form Elements for Workflow",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get Notification Form Elements for Workflow\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    description = jsonData.data.description\r",
+							"    actionName = jsonData.data.actionItem.actionName\r",
+							"\r",
+							"    pm.expect(description).to.not.be.null;\r",
+							"    pm.expect(actionName).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/workflows/00fbbc39-26a2-426d-b289-8def7bb40eaa/notification?actionId=d0eec6ef-eeb7-43ba-8751-2fcd875dde9d",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"workflows",
+						"00fbbc39-26a2-426d-b289-8def7bb40eaa",
+						"notification"
+					],
+					"query": [
+						{
+							"key": "actionId",
+							"value": "d0eec6ef-eeb7-43ba-8751-2fcd875dde9d"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Teams Notification Form",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get Teams Notification Form\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"\r",
+							"    webHookUrl = jsonData.data.data.webHookUrl\r",
+							"    pm.expect(webHookUrl).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/workflows/ca6c3cef-4bb1-47de-87d7-7310919a1895/teams-notification?actionId=643ec608-b84a-4e32-9557-c5bdc8829c1f",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"workflows",
+						"ca6c3cef-4bb1-47de-87d7-7310919a1895",
+						"teams-notification"
+					],
+					"query": [
+						{
+							"key": "actionId",
+							"value": "643ec608-b84a-4e32-9557-c5bdc8829c1f"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Slack Notification Form",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/workflows/00fbbc39-26a2-426d-b289-8def7bb40eaa/slack-notification?actionId",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"workflows",
+						"00fbbc39-26a2-426d-b289-8def7bb40eaa",
+						"slack-notification"
+					],
+					"query": [
+						{
+							"key": "actionId",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Email Form for Workflow",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/workflows/00fbbc39-26a2-426d-b289-8def7bb40eaa/email?actionId",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"workflows",
+						"00fbbc39-26a2-426d-b289-8def7bb40eaa",
+						"email"
+					],
+					"query": [
+						{
+							"key": "actionId",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Sms Form for Workflow",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/workflows/00fbbc39-26a2-426d-b289-8def7bb40eaa/sms?actionId",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"workflows",
+						"00fbbc39-26a2-426d-b289-8def7bb40eaa",
+						"sms"
+					],
+					"query": [
+						{
+							"key": "actionId",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Field Form for Workflow",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/workflows/00fbbc39-26a2-426d-b289-8def7bb40eaa/field?actionId=bb0b3039-a550-403e-aa8c-555c3cddbc79",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"workflows",
+						"00fbbc39-26a2-426d-b289-8def7bb40eaa",
+						"field"
+					],
+					"query": [
+						{
+							"key": "actionId",
+							"value": "bb0b3039-a550-403e-aa8c-555c3cddbc79"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Transfer Form for Workflow",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/workflows/00fbbc39-26a2-426d-b289-8def7bb40eaa/transfer-form?actionId=8d36b7ab-aca0-4296-a739-4d5d2f720379",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"workflows",
+						"00fbbc39-26a2-426d-b289-8def7bb40eaa",
+						"transfer-form"
+					],
+					"query": [
+						{
+							"key": "actionId",
+							"value": "8d36b7ab-aca0-4296-a739-4d5d2f720379"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Activity Form for Workflow",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/workflows/00fbbc39-26a2-426d-b289-8def7bb40eaa/activity?actionId=b8f23d36-33a3-419a-809b-c2d5bd73ac8f",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"workflows",
+						"00fbbc39-26a2-426d-b289-8def7bb40eaa",
+						"activity"
+					],
+					"query": [
+						{
+							"key": "actionId",
+							"value": "b8f23d36-33a3-419a-809b-c2d5bd73ac8f"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Triggers for Workflow",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get All Workflows\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    name = jsonData.data[0].name\r",
+							"    displayName = jsonData.data[0].displayName\r",
+							"    triggerName = jsonData.data[0].triggers.triggerName\r",
+							"    triggerDisplayName = jsonData.data[0].triggers.triggerDisplayName\r",
+							"\r",
+							"    pm.expect(name).to.not.be.null;\r",
+							"    pm.expect(displayName).to.not.be.null;\r",
+							"    pm.expect(triggerName).to.not.be.null;\r",
+							"    pm.expect(triggerDisplayName).to.not.be.null\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/workflows/triggers",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"workflows",
+						"triggers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Workflow Rules",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/workflows/00fbbc39-26a2-426d-b289-8def7bb40eaa/rules",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"workflows",
+						"00fbbc39-26a2-426d-b289-8def7bb40eaa",
+						"rules"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

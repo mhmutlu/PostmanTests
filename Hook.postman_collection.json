@@ -1,0 +1,228 @@
+{
+	"info": {
+		"_postman_id": "b4ebc2cc-dd89-460f-8cf7-989372139bde",
+		"name": "Hook",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All Hooks Types",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get All Hooks Types\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    data = jsonData.data[0]\r",
+							"    pm.expect(data).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/hooks/types",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"hooks",
+						"types"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Hooks",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get All Hooks\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    tenantId = jsonData.data[0].tenantId\r",
+							"    key = jsonData.data[0].key\r",
+							"    name = jsonData.data[0].name\r",
+							"    id = jsonData.data[0].id\r",
+							"    \r",
+							"    pm.expect(tenantId).to.not.be.null;\r",
+							"    pm.expect(key).to.not.be.null;\r",
+							"    pm.expect(name).to.not.be.null;\r",
+							"    pm.expect(id).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/hooks",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"hooks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Single Hook By Key",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get Single Hook By Key\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    key = jsonData.data[0].key\r",
+							"    name = jsonData.data[0].name\r",
+							"    \r",
+							"    pm.expect(key).to.not.be.null;\r",
+							"    pm.expect(name).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/hooks/85fcf32f-0f47-45fc-b018-599288bf630b",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"hooks",
+						"85fcf32f-0f47-45fc-b018-599288bf630b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Hook Requests",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Hooks check\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    hookId = jsonData.data[0].hookId\r",
+							"    url = jsonData.data[0].url\r",
+							"    method = jsonData.data[0].method\r",
+							"    tenantId = jsonData.data[0].tenantId\r",
+							"    key = jsonData.data[0].key\r",
+							"    name = jsonData.data[0].name\r",
+							"    id = jsonData.data[0].id\r",
+							"    \r",
+							"    pm.expect(hookId).to.not.be.null;\r",
+							"    pm.expect(url).to.not.be.null;\r",
+							"    pm.expect(method).to.not.be.null\r",
+							"    pm.expect(tenantId).to.not.be.null;\r",
+							"    pm.expect(key).to.not.be.null;\r",
+							"    pm.expect(name).to.not.be.null;\r",
+							"    pm.expect(id).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/hooks/85fcf32f-0f47-45fc-b018-599288bf630b/requests",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"hooks",
+						"85fcf32f-0f47-45fc-b018-599288bf630b",
+						"requests"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

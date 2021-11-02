@@ -1,0 +1,19 @@
+{
+	"id": "752745a2-2eb1-4084-8401-3f50b1e9a192",
+	"values": [
+		{
+			"key": "Token",
+			"value": "PipuuCIDSKdQBYGT3tRNPBn2QOHuI7VmEX4ipBqxgte0S9PET2nNDRqEumUVvOuK",
+			"enabled": true
+		},
+		{
+			"key": "Source",
+			"value": "https://gateway.dev.fowapps.com/",
+			"enabled": true
+		}
+	],
+	"name": "Bilge Adam Globals",
+	"_postman_variable_scope": "globals",
+	"_postman_exported_at": "2021-11-02T11:44:38.493Z",
+	"_postman_exported_using": "Postman/8.12.1"
+}

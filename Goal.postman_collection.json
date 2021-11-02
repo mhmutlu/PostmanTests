@@ -1,0 +1,201 @@
+{
+	"info": {
+		"_postman_id": "881fa9b3-5efb-40e6-af1e-c6a52ed27deb",
+		"name": "Goal",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Goal Types",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get Goal Types\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    goalCategory = jsonData.data[0].goalCategory\r",
+							"    goalMetrics = jsonData.data[0].goalMetrics\r",
+							"    goalParameters = jsonData.data[0].goalMetrics[0].goalParameters[0]\r",
+							"    \r",
+							"    pm.expect(goalCategory).to.not.be.null;\r",
+							"    pm.expect(goalMetrics).to.not.be.null;\r",
+							"    pm.expect(goalParameters).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/goals",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"goals"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find Goal",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Find Goal\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    name = jsonData.data.name\r",
+							"    category = jsonData.data.category\r",
+							"    metric = jsonData.data.metric\r",
+							"    parameter = jsonData.data.parameter\r",
+							"    target = jsonData.data.target\r",
+							"    \r",
+							"    pm.expect(name).to.not.be.null;\r",
+							"    pm.expect(category).to.not.be.null;\r",
+							"    pm.expect(metric).to.not.be.null;\r",
+							"    pm.expect(parameter).to.not.be.null;\r",
+							"    pm.expect(target).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/goals/4e1c78a2-44dc-4e32-945a-4bd9fb011047",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"goals",
+						"4e1c78a2-44dc-4e32-945a-4bd9fb011047"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Goals for user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get All for user\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    name = jsonData.data[0].name\r",
+							"    category = jsonData.data[0].category\r",
+							"    metric = jsonData.data[0].metric\r",
+							"    parameter = jsonData.data[0].parameter\r",
+							"    target = jsonData.data[0].target\r",
+							"    \r",
+							"    pm.expect(name).to.not.be.null;\r",
+							"    pm.expect(category).to.not.be.null;\r",
+							"    pm.expect(metric).to.not.be.null;\r",
+							"    pm.expect(parameter).to.not.be.null;\r",
+							"    pm.expect(target).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/goals/own-goals",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"goals",
+						"own-goals"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer"
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

@@ -1,0 +1,351 @@
+{
+	"info": {
+		"_postman_id": "139f5a56-6f11-4c7d-ba2c-412916876229",
+		"name": "Email",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Verification Email Adress",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/emails/verificate",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"emails",
+						"verificate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find Email Recipients",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Find Email Recipients\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    fullName = jsonData.data[0].fullName\r",
+							"    emailAddress = jsonData.data[0].emailAddress\r",
+							"    modelName = jsonData.data[0].modelName\r",
+							"    modelId = jsonData.data[0].modelId\r",
+							"\r",
+							" \r",
+							"    pm.expect(fullName).to.not.be.null;\r",
+							"    pm.expect(emailAddress).to.not.be.null;\r",
+							"    pm.expect(modelName).to.not.be.null;\r",
+							"    pm.expect(modelId).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/emails/search?name=mhmutlu@bilgeadam.com",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"emails",
+						"search"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "mhmutlu@bilgeadam.com"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Email with filter",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/emails/email?modelId=8d04b0cb-ce04-413a-be14-2c458eca1783&modelName=contact",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"emails",
+						"email"
+					],
+					"query": [
+						{
+							"key": "sorting",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "skipCount",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "maxResultCount",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "modelName",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "startDate",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "endDate",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "modelId",
+							"value": "8d04b0cb-ce04-413a-be14-2c458eca1783"
+						},
+						{
+							"key": "modelName",
+							"value": "contact"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Accounts",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get Accounts\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    id = jsonData.data[0].id\r",
+							"    name = jsonData.data[0].name\r",
+							"    emailAddress = jsonData.data[0].emailAddress\r",
+							"\r",
+							" \r",
+							"    pm.expect(id).to.not.be.null;\r",
+							"    pm.expect(name).to.not.be.null;\r",
+							"    pm.expect(emailAddress).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/emails/account",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"emails",
+						"account"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Email",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/emails/{id}",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"emails",
+						"{id}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Account",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get Account\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    id = jsonData.data.id\r",
+							"    name = jsonData.data.name\r",
+							"    emailAddress = jsonData.data.emailAddress\r",
+							"\r",
+							" \r",
+							"    pm.expect(id).to.not.be.null;\r",
+							"    pm.expect(name).to.not.be.null;\r",
+							"    pm.expect(emailAddress).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/emails/account/2f4c192b-4c97-49ad-a17b-12d27ecd3d67",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"emails",
+						"account",
+						"2f4c192b-4c97-49ad-a17b-12d27ecd3d67"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

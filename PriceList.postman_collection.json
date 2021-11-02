@@ -1,0 +1,220 @@
+{
+	"info": {
+		"_postman_id": "d3e848b7-c649-4d3a-8c4d-2c7196b522d2",
+		"name": "PriceList",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Find Price List",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Find Price List\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"\r",
+							"    name = jsonData.data.name\r",
+							"    pm.expect(name).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/prices/184f1b36-d754-4ec0-b8ca-d9b09eac0354",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"prices",
+						"184f1b36-d754-4ec0-b8ca-d9b09eac0354"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Price List",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get All Price List\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"\r",
+							"    name = jsonData.data[0].name\r",
+							"    pm.expect(name).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/prices/all",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"prices",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All PriceList for Product",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get All PriceList for Product\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"\r",
+							"    name = jsonData.data.items[0].name\r",
+							"    unitPrice = jsonData.data.items[0].unitPrice\r",
+							"    currencyName = jsonData.data.items[0].currency.name\r",
+							"    currencyCode = jsonData.data.items[0].currency.code\r",
+							"    currencySymbol = jsonData.data.items[0].currency.symbol\r",
+							"\r",
+							"    pm.expect(name).to.not.be.null;\r",
+							"    pm.expect(unitPrice).to.not.be.null;\r",
+							"    pm.expect(currencyName).to.not.be.null;\r",
+							"    pm.expect(currencyCode).to.not.be.null;\r",
+							"    pm.expect(currencySymbol).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/prices/products/86d05d38-5571-4d76-ba67-37fa16aaab9f",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"prices",
+						"products",
+						"86d05d38-5571-4d76-ba67-37fa16aaab9f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Calculate Money Unites with PriceListItemIds",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Calculate Money Unites with PriceListItemIds\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"\r",
+							"    currencyName = jsonData.data.baseCurrency.name\r",
+							"    currencyCode = jsonData.data.baseCurrency.code\r",
+							"    currencySymbol = jsonData.data.baseCurrency.symbol\r",
+							"\r",
+							"    pm.expect(currencyName).to.not.be.null;\r",
+							"    pm.expect(currencyCode).to.not.be.null;\r",
+							"    pm.expect(currencySymbol).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/prices/priceListItem-calculate",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"prices",
+						"priceListItem-calculate"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

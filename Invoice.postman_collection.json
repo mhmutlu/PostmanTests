@@ -1,0 +1,475 @@
+{
+	"info": {
+		"_postman_id": "8cb64277-91ee-41f6-9fe4-23323c335bcd",
+		"name": "Invoice",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Payment Plan Items",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/invoices/paymentPlanItems",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"invoices",
+						"paymentPlanItems"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Find Invoice",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Find Invoice\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    name = jsonData.data.name\r",
+							"    accountId = jsonData.data.accountId\r",
+							"    totalAmount = jsonData.data.totalAmount\r",
+							"    finalAmount = jsonData.data.finalAmount\r",
+							"    accountName = jsonData.data.account.name\r",
+							"\r",
+							"    totalAmountBaseCurrencyValue = jsonData.data.totalAmountBaseCurrency.value\r",
+							"    totalCurrencyName = jsonData.data.totalAmountBaseCurrency.currency.name\r",
+							"    totalCurrencyCode = jsonData.data.totalAmountBaseCurrency.currency.code\r",
+							"    totalCurrencySymbol = jsonData.data.totalAmountBaseCurrency.currency.symbol\r",
+							"\r",
+							"    finalAmountBaseCurrencyValue = jsonData.data.finalAmountBaseCurrency.value\r",
+							"    finalCurrencyName = jsonData.data.finalAmountBaseCurrency.currency.name\r",
+							"    finalCurrencyCode = jsonData.data.finalAmountBaseCurrency.currency.code\r",
+							"    finalCurrencySymbol = jsonData.data.finalAmountBaseCurrency.currency.symbol\r",
+							"   \r",
+							"    pm.expect(name).to.not.be.null; \r",
+							"    pm.expect(accountId).to.not.be.null; \r",
+							"    pm.expect(totalAmount).to.not.be.null; \r",
+							"    pm.expect(finalAmount).to.not.be.null; \r",
+							"    pm.expect(accountName).to.not.be.null;\r",
+							"   \r",
+							"    pm.expect(totalAmountBaseCurrencyValue).to.not.be.null;\r",
+							"    pm.expect(totalCurrencyName).to.not.be.null;\r",
+							"    pm.expect(totalCurrencyCode).to.not.be.null;\r",
+							"    pm.expect(totalCurrencySymbol).to.not.be.null;\r",
+							"\r",
+							"    pm.expect(finalAmountBaseCurrencyValue).to.not.be.null;\r",
+							"    pm.expect(finalCurrencyName).to.not.be.null;\r",
+							"    pm.expect(finalCurrencyCode).to.not.be.null;\r",
+							"    pm.expect(finalCurrencySymbol).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/invoices/88876837-8c82-4cfa-9f32-4a9a20103c2a",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"invoices",
+						"88876837-8c82-4cfa-9f32-4a9a20103c2a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Overview",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Overview\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    displayName = jsonData.data.items[0].displayName\r",
+							"    value = jsonData.data.items[0].value\r",
+							"\r",
+							"    pm.expect(displayName).to.not.be.null;\r",
+							"    pm.expect(value).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/invoices/overview?companyId=e37fe436-7f67-4d4a-9f8f-23e7609d3833&opportunityId=15cc2b4b-7b26-42a0-8dd0-8bd7ee75319b",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"invoices",
+						"overview"
+					],
+					"query": [
+						{
+							"key": "companyId",
+							"value": "e37fe436-7f67-4d4a-9f8f-23e7609d3833"
+						},
+						{
+							"key": "opportunityId",
+							"value": "15cc2b4b-7b26-42a0-8dd0-8bd7ee75319b"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Status Bar",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get Status Bar\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    categoryCode = jsonData.data.invoiceStatuses[0].category.code\r",
+							"    categoryName = jsonData.data.invoiceStatuses[0].category.name\r",
+							"    categoryType = jsonData.data.invoiceStatuses[0].category.type\r",
+							"    name = jsonData.data.invoiceStatuses[0].name\r",
+							"\r",
+							"    pm.expect(categoryCode).to.not.be.null;\r",
+							"    pm.expect(categoryName).to.not.be.null;\r",
+							"    pm.expect(categoryType).to.not.be.null;\r",
+							"    pm.expect(name).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/invoices/e1f7ae55-3a96-40cd-bee2-8a096a2a446d/statusBar",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"invoices",
+						"e1f7ae55-3a96-40cd-bee2-8a096a2a446d",
+						"statusBar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Calculate Money Unites with InvoiceIds",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Calculate Money Unites with InvoiceIds\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    name = jsonData.data.name\r",
+							"    code = jsonData.data.code  \r",
+							"    symbol = jsonData.data.symbol\r",
+							"\r",
+							"    pm.expect(name).to.not.be.null;\r",
+							"    pm.expect(code).to.not.be.null;    \r",
+							"    pm.expect(symbol).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/invoices/invoice-calculate?invoiceIds=c9297959-a040-4b9e-a6be-3a2e2435d03e&invoiceIds=13618adf-5338-42c6-ab23-bc4bf661fa34",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"invoices",
+						"invoice-calculate"
+					],
+					"query": [
+						{
+							"key": "invoiceIds",
+							"value": "c9297959-a040-4b9e-a6be-3a2e2435d03e"
+						},
+						{
+							"key": "invoiceIds",
+							"value": "13618adf-5338-42c6-ab23-bc4bf661fa34"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Calculate Money Unites with OpportunityId",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Calculate Money Unites with OpportunityId\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    baseCurrencyName = jsonData.data.baseCurrency.name\r",
+							"    baseCurrencyCode = jsonData.data.baseCurrency.code\r",
+							"    baseCurrencySymbol = jsonData.data.baseCurrency.symbol\r",
+							"\r",
+							"    pm.expect(baseCurrencyName).to.not.be.null;\r",
+							"    pm.expect(baseCurrencyCode).to.not.be.null;\r",
+							"    pm.expect(baseCurrencySymbol).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/invoices/invoice-calculate-by-opportunity?opportunityId=f4673858-0789-4a5f-a0f4-9a42823ddaf5",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"invoices",
+						"invoice-calculate-by-opportunity"
+					],
+					"query": [
+						{
+							"key": "opportunityId",
+							"value": "f4673858-0789-4a5f-a0f4-9a42823ddaf5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Invoices",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get Invoices\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    name = jsonData.data.items[0].name\r",
+							"    accountId = jsonData.data.items[0].accountId\r",
+							"    accountName = jsonData.data.items[0].accountName\r",
+							"    opportunityId = jsonData.data.items[0].opportunityId\r",
+							"    opportunityName = jsonData.data.items[0].opportunityName\r",
+							"    statusId = jsonData.data.items[0].statusId\r",
+							"    status = jsonData.data.items[0].status\r",
+							"   \r",
+							"    currencyName = jsonData.data.items[0].currency.name\r",
+							"    currencyCode = jsonData.data.items[0].currency.code\r",
+							"    currencySymbol = jsonData.data.items[0].currency.symbol\r",
+							"\r",
+							"    pm.expect(name).to.not.be.null;\r",
+							"    pm.expect(accountId).to.not.be.null;    \r",
+							"    pm.expect(accountName).to.not.be.null;\r",
+							"    pm.expect(opportunityId).to.not.be.null;\r",
+							"    pm.expect(opportunityName).to.not.be.null; \r",
+							"    pm.expect(statusId).to.not.be.null;\r",
+							"    pm.expect(status).to.not.be.null; \r",
+							"\r",
+							"    pm.expect(currencyName).to.not.be.null;\r",
+							"    pm.expect(currencyCode).to.not.be.null;\r",
+							"    pm.expect(currencySymbol).to.not.be.null;    \r",
+							"   \r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/invoices?companyId=0ca026ed-df05-472c-8e44-cfb6c39aec88&opportunityId=291ad8af-1385-4ee7-95a1-f2d7edc5a4be&isPayment=true&paymentId=925a5186-fb46-4c12-ad7f-39a63d1ca106",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"invoices"
+					],
+					"query": [
+						{
+							"key": "companyId",
+							"value": "0ca026ed-df05-472c-8e44-cfb6c39aec88"
+						},
+						{
+							"key": "opportunityId",
+							"value": "291ad8af-1385-4ee7-95a1-f2d7edc5a4be"
+						},
+						{
+							"key": "isPayment",
+							"value": "true"
+						},
+						{
+							"key": "paymentId",
+							"value": "925a5186-fb46-4c12-ad7f-39a63d1ca106"
+						},
+						{
+							"key": "sorting",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "skipCount",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "maxResultCount",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

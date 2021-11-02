@@ -1,0 +1,85 @@
+{
+	"info": {
+		"_postman_id": "6ca8181b-d163-400c-92cb-51a80e99aa48",
+		"name": "SocialMedia",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Social Media Accounts",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", () => {\r",
+							"  pm.response.to.have.status(200)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Get Social Media Accounts\", () => {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    url = jsonData.data.items[0].url\r",
+							"    typeName = jsonData.data.items[0].typeName\r",
+							"\r",
+							"    pm.expect(url).to.not.be.null;\r",
+							"    pm.expect(typeName).to.not.be.null;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Source}}crm/v1/socialMedias?parentType=contact&parentId=b05db0a1-31cb-4e4a-bfd3-a9f16b4a8213",
+					"host": [
+						"{{Source}}crm"
+					],
+					"path": [
+						"v1",
+						"socialMedias"
+					],
+					"query": [
+						{
+							"key": "parentType",
+							"value": "contact"
+						},
+						{
+							"key": "parentId",
+							"value": "b05db0a1-31cb-4e4a-bfd3-a9f16b4a8213"
+						},
+						{
+							"key": "sortin",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "skipCount",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "maxResultCount",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
